@@ -242,8 +242,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="#"><i class="fa fa-list-ul"></i>List categories</a></li>
-            <li><a href="#"><i class="fa fa-plus"></i>Add category</a></li>
+            <li><a href="{{route('categories.list')}}"><i class="fa fa-list-ul"></i>List categories</a></li>
+            <li><a href="{{route('categories.create')}}"><i class="fa fa-plus"></i>Add category</a></li>
             <li>
               <a href="#"><i class="fa fa-circle-o"></i> Level One
                 <span class="pull-right-container">
@@ -310,8 +310,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="#"><i class="fa fa-list-ul"></i>List users</a></li>
-            <li><a href="#"><i class="fa fa-plus"></i>Add user</a></li>
+            <li><a href="{{route('users.list')}}"><i class="fa fa-list-ul"></i>List users</a></li>
+            <li><a href="{{route('users.create')}}"><i class="fa fa-plus"></i>Add user</a></li>
             <li>
               <a href="#"><i class="fa fa-circle-o"></i> Level One
                 <span class="pull-right-container">

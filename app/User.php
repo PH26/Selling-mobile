@@ -15,6 +15,8 @@ class User extends Authenticatable
      *
      * @var array
      */
+    const CUSTOMER_TYPE = 0;
+    const ADMIN_TYPE = 1;
     protected $fillable = [
         'name', 'email', 'password', 'tel', 'user_type', 'active'
     ];
