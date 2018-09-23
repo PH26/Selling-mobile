@@ -14,27 +14,36 @@
                             @csrf
                             <input name="_method" type="hidden" value="PUT">
                             <div class="form-group">
-                                <label>ID:</label>
-                                <label>{{$user->id}}</label>
-                            </div>
+                                <label>ID</label>
+                                <input class="form-control" disabled name="id" value="{{ $user->id }}"/>
                             <div class="form-group">
                                 <label>Name</label>
-                                <input class="form-control" name="name" value="{{ $user->name }}"  placeholder="Please enter user name" />
+                                <input class="form-control" required="" name="name" value="{{ $user->name }}"       placeholder="Please enter user name" />
                             </div>
                             <div class="form-group">
                                 <label>Tel</label>
-                                <input class="form-control" name="tel" value="{{ $user->tel }}"  placeholder="Please enter user tel" />
+                                <input class="form-control" required="" name="tel" value="{{ $user->tel }}"  placeholder="Please enter user tel" />
                             </div>
                             <div class="form-group">
-                                <label>Email:</label>
-                                <label>{{$user->email}}</label>
+                                <label>Email</label>
+                                <input class="form-control" disabled name="email" value="{{ $user->email }}"/>
                             </div>
                             <div class="form-group">
-                                <label>Type:</label>
-                                <label>{{ $user->user_type }}</label>
+                                <label>Type</label>
+                                <div class="form-controls">
+                                    <select name="user_type" class="form-control">
+                                        @if($user->user_type== App\User::ADMIN_TYPE)
+                                            <option value="1" selected="selected">Admin</option>
+                                            <option value="0">Customer</option>
+                                        @else
+                                            <option value="0" selected="selected">Customer</option>
+                                            <option value="1">Admin</option>
+                                        @endif
+                                    </select>
+                                </div>
                             </div>
                             <div class="form-group">
-                                <label>Active:</label>
+                                <label>Active</label>
                                 <label>
                                     @if($user->active == 1)
                                         <span class="fa fa-check-square-o fa-fw" 
@@ -48,6 +57,11 @@
                            
                             <button type="submit" class="btn btn-default">Edit</button>
                             <button type="reset" class="btn btn-default">Reset</button>
+                            <hr>
+
+                            <div class="form-group">
+                                <a style="font-size: 18px;" href="{{route('users.list')}}">Back to list</a>
+                            </div>                      
                         <form>
                     </div>
                 </div>

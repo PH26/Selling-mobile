@@ -37,7 +37,7 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $user = User::create($request->all());
-        return redirect()->route('users.list');
+        return redirect()->route('users.list')->with('success', 'Create a new user successfully');;
     }
 
     /**
@@ -72,7 +72,7 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         $user->update($request->all());
-        return redirect()->route('users.list');
+        return redirect()->route('users.list')->with('success', 'Edit a user successfully');
     }
 
     /**

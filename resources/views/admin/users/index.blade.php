@@ -9,6 +9,13 @@
                             <small>List</small>
                         </h1>
                     </div>
+                    <div class="col-lg-12">
+                        @if (session('success'))
+                            <div class="alert alert-success" role="alert">
+                                {{ session('success') }}
+                            </div>
+                        @endif     
+                    </div>
                     <!-- /.col-lg-12 -->
                     <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                         <thead>

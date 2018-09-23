@@ -14,11 +14,17 @@
                           	@csrf
                             <div class="form-group">
                                 <label>Name</label>
-                                <input class="form-control" name="name" placeholder="Please enter category name" />
+                                <input class="form-control" required=""  name="name" 
+                                    placeholder="Please enter category name" />
                             </div>
                             
                             <button type="submit" class="btn btn-default">Add</button>
                             <button type="reset" class="btn btn-default">Reset</button>
+                            <hr>
+
+                            <div class="form-group">
+                                <a style="font-size: 18px;" href="{{route('categories.list')}}">Back to list</a>
+                            </div> 
                         <form>
                     </div>
                 </div>

@@ -56,7 +56,7 @@ class UsersTableSeeder extends Seeder
                 'email'=>'hovannhan.dev@gmail.com',
                 'password'=> bcrypt('123456'),
                 'user_type' => 0,
-                'active'=> 1,
+                'active'=> 0,
                 'email_verified_at'=>$currentTime,
                 'created_at'=>$currentTime,
                 'updated_at'=>$currentTime

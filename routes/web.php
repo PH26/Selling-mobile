@@ -14,7 +14,7 @@ Route::group(['prefix'=>'admin'],function () {
 		    Route::post('/create', 'CategoryController@store')->name("categories.store");
 		    Route::get('/edit/{category}', 'CategoryController@edit')->name("categories.edit");
 		    Route::put('/edit/{category}', 'CategoryController@update')->name("categories.update");
-		  Route::delete('/delete/{category}','CategoryController@destroy')->name("categories.destroy");
+		    Route::get('/delete/{category}','CategoryController@destroy')->name("categories.destroy");
 		});
 
 		Route::group(['prefix'=>'users'],function () {
@@ -23,7 +23,7 @@ Route::group(['prefix'=>'admin'],function () {
 		    Route::post('/create', 'UserController@store')->name("users.store");
 		    Route::get('/edit/{user}', 'UserController@edit')->name("users.edit");
 		    Route::put('/edit/{user}', 'UserController@update')->name("users.update");
-		    Route::delete('/delete/{user}','UserController@destroy')->name("users.destroy");
+		    Route::get('/delete/{user}','UserController@destroy')->name("users.destroy");
 		});
 
 });
