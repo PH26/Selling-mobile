@@ -8,6 +8,13 @@
                             <small>Add</small>
                         </h1>
                     </div>
+                    <div class="col-lg-12">
+                        @if (session('success'))
+                            <div class="alert alert-success" role="alert">
+                                {{ session('success') }}
+                            </div>
+                        @endif     
+                    </div>
                     <!-- /.col-lg-12 -->
                     <div class="col-lg-7" style="padding-bottom:120px">
                         <form action="{{ route('categories.store')}}" method="POST">

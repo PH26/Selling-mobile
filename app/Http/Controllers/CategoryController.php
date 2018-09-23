@@ -37,7 +37,7 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $category = Category::create($request->all());
-        return redirect()->route('categories.list')->with('success', 'Create a new category successfully');
+        return redirect()->route('categories.create')->with('success', 'Create a new category successfully');
     }
 
     /**

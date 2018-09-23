@@ -8,6 +8,13 @@
                             <small>Add</small>
                         </h1>
                     </div>
+                    <div class="col-lg-12">
+                        @if (session('success'))
+                            <div class="alert alert-success" role="alert">
+                                {{ session('success') }}
+                            </div>
+                        @endif     
+                    </div>
                     <!-- /.col-lg-12 -->
                     <div class="col-lg-7" style="padding-bottom:120px">
                         <form action="{{ route('users.store')}}" method="POST">
@@ -34,7 +41,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Type</label>
-                                <select name="user_type">
+                                <select class="form-control" name="user_type">
                                 	<option value="0">Customer</option>
                                 	<option value="1">Admin</option>
                                 </select>
