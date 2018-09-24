@@ -8,6 +8,18 @@
                             <small>List</small>
                         </h1>
                     </div>
+                    <div class="col-md-4 col-md-offset-8">
+                        <div id="custom-search-input">
+                            <div class="input-group col-md-12">
+                                <input type="text" class="form-control input-md" placeholder="Search..." />
+                                <span class="input-group-btn">
+                                    <button class="btn btn-info btn-md" type="button">
+                                        <i class="glyphicon glyphicon-search"></i>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
                     <div class="col-lg-12">
                         @if (session('success'))
                             <div class="alert alert-success" role="alert">
