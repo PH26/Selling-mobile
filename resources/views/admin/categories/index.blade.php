@@ -33,8 +33,8 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Name</th>
-                                <th>Edit</th>
                                 <th>Delete</th>
+                                <th>Edit</th>
                             </tr>
                         </thead>
                         <tbody>
