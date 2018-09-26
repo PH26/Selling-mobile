@@ -9,6 +9,13 @@
                             <small>List</small>
                         </h1>
                     </div>
+                    <div class="col-md-12">
+                        @if (session('success'))
+                            <div class="alert alert-success" role="alert">
+                                {{ session('success') }}
+                            </div>
+                        @endif     
+                    </div>
                     <div class="col-md-4 col-md-offset-8">
                         <div id="custom-search-input">
                             <div class="input-group col-md-12">
@@ -21,13 +28,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-12">
-                        @if (session('success'))
-                            <div class="alert alert-success" role="alert">
-                                {{ session('success') }}
-                            </div>
-                        @endif     
-                    </div>
+                    
                     <!-- /.col-lg-12 -->
                     <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                         <thead>

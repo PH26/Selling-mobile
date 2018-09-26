@@ -12,7 +12,7 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function list()
     {
         $categories = Category::paginate(10);
         return view('admin.categories.index')->with('categories', $categories);
