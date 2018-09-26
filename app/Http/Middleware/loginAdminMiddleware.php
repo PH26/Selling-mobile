@@ -19,7 +19,7 @@ class loginAdminMiddleware
     {
        if (Auth::check()) {
             $user=Auth::user();
-            if ($user->user_type == User::ADMIN_TYPE) {
+            if ($user->user_type == User::ADMIN_TYPE  && $user->active==1) {
                 return $next($request);
             }else{
                 return redirect()->route('admin.getLogin');
