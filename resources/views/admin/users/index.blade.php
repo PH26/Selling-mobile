@@ -10,25 +10,27 @@
                         </h1>
                     </div>
                     <div class="col-md-12">
-                        @if (session('success'))
-                            <div class="alert alert-success" role="alert">
-                                {{ session('success') }}
-                            </div>
-                        @endif     
-                    </div>
+                            @if (session('success'))
+                                <div class="alert" style="background:#47d147; color:red" role="alert">
+                                    {{ session('success') }}
+                                </div>
+                            @endif     
+                        </div>
                     <div class="col-md-4 col-md-offset-8">
-                        <div id="custom-search-input">
-                            <div class="input-group col-md-12">
-                                <input type="text" class="form-control input-md" placeholder="Search..." />
-                                <span class="input-group-btn">
+                        <form action="{{ route('categories.store')}}" method="POST">
+                            <div id="custom-search-input">
+                                <div class="input-group col-md-12">
+                                    @csrf
+                                    <input type="text" class="form-control input-md" placeholder="Search..." />
+                                    <span class="input-group-btn">
                                     <button class="btn btn-info btn-md" type="button">
                                         <i class="glyphicon glyphicon-search"></i>
                                     </button>
-                                </span>
+                                    </span>                                                                
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    
+                        <form> 
+                    </div>             
                     <!-- /.col-lg-12 -->
                     <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                         <thead>

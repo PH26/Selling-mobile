@@ -4,9 +4,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/admin/login','UserController@getLoginAdmin')->name('admin.getLogin'); 
-Route::post('/admin/login','UserController@loginAdmin')->name("admin.login");
-Route::get('/admin/logout','UserController@logoutAdmin')->name('admin.logout'); 
+Route::get('/admin/login','AdminController@getLogin')->name('admin.getLogin'); 
+Route::post('/admin/login','AdminController@login')->name("admin.login");
+Route::get('/admin/logout','AdminController@logout')->name('admin.logout'); 
 
 Route::group(['prefix'=>'admin','middleware'=>'admin'],function () {
 		Route::get('/', function (){ return view('admin.layouts.master'); })->name('admin.index');

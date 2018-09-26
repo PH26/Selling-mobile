@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Support\Facades\Auth;
 use App\User;
 use Illuminate\Http\Request;
@@ -85,22 +86,5 @@ class UserController extends Controller
     {
         $user->delete();
         return redirect()->route('users.list')->with('success', 'Delete a user successfully');
-    }
-    public function getLoginAdmin()
-    {
-        return view('admin.login');
-    }
-    public function loginAdmin(Request $request)
-    {
-        if (Auth::attempt(['email'=>$request->email,'password'=>$request->password])) {
-            return redirect()->route('admin.index');
-        }else{
-            return redirect()->route('admin.getLogin');
-        }
-    }
-    public function logoutAdmin()
-    {
-        Auth::logout();
-        return redirect()->route('admin.getLogin');
     }
 }
