@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Product;
+use App\Image;
+use App\Category;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -12,9 +14,10 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function list()
     {
-        //
+        $products = Product::paginate(10);
+        return view('admin.products.index')->with('products', $products);
     }
 
     /**
@@ -24,7 +27,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        $categories= Category::all();
+        return view('admin.products.create')->with('categories', $categories);
     }
 
     /**
@@ -35,7 +39,19 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $product = Product::create($request->all());
+        if($request->file('images')){
+            foreach($request->file('images') as $image){
+                $image_name= date('Y-m-d H:i:s').$image->getClientOriginalName();
+                $path= 'images';
+                $image->move($path, $image_name);
+                $img= Image::create([
+                    'url' =>$path.'/'.$image_name,
+                    'product_id' => $product->id
+                ]);
+            }
+        }
+        return redirect()->route('products.create')->with('success', 'Create a new product successfully');
     }
 
     /**
@@ -57,7 +73,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        return view('admin.products.edit')->with('product', $product);
     }
 
     /**
@@ -69,7 +85,8 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        $product->update($request->all());
+       return redirect()->route('products.list')->with('success', 'Edit a product successfully');
     }
 
     /**
@@ -80,6 +97,7 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        $product->delete();
+        return redirect()->route('products.list')->with('success', 'Delete a new product successfully');
     }
 }

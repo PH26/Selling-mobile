@@ -11,13 +11,13 @@
                     </div>
                     <div class="col-md-12">
                             @if (session('success'))
-                                <div class="alert" style="background:#47d147; color:red" role="alert">
+                                <div class="alert" style="background:#dff0d8; color:#4f844f" role="alert">
                                     {{ session('success') }}
                                 </div>
                             @endif     
                         </div>
                     <div class="col-md-4 col-md-offset-8">
-                        <form action="{{ route('categories.store')}}" method="POST">
+                        <form action="#" method="GET">
                             <div id="custom-search-input">
                                 <div class="input-group col-md-12">
                                     @csrf

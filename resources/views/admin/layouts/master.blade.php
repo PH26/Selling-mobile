@@ -244,8 +244,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
-             <li><a href="#"><i class="fa fa-list-ul"></i>List products</a></li>
-            <li><a href="#"><i class="fa fa-plus"></i>Add product</a></li>
+             <li><a href="{{route('products.list')}}"><i class="fa fa-list-ul"></i>List products</a></li>
+            <li><a href="{{route('products.create')}}"><i class="fa fa-plus"></i>Add product</a></li>
           </ul>
         </li>
 

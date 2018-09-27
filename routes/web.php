@@ -29,6 +29,15 @@ Route::group(['prefix'=>'admin','middleware'=>'admin'],function () {
 		    Route::get('/delete/{user}','UserController@destroy')->name("users.destroy");
 		});
 
+		Route::group(['prefix'=>'products'],function () {
+		    Route::get('/', 'ProductController@list')->name("products.list");
+		    Route::get('/create', 'ProductController@create')->name("products.create");
+		    Route::post('/create', 'ProductController@store')->name("products.store");
+		    Route::get('/edit/{product}', 'ProductController@edit')->name("products.edit");
+		    Route::put('/edit/{product}', 'ProductController@update')->name("products.update");
+		    Route::get('/delete/{product}','ProductController@destroy')->name("products.destroy");
+		});
+
 });
 
 Auth::routes();
