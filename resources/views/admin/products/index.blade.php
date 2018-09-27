@@ -4,7 +4,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">Category
+                        <h1 class="page-header">Product
                             <small>List</small>
                         </h1>
                     </div>
@@ -36,27 +36,35 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Name</th>
+                                <th>Category</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th>Warranty</th>
                                 <th>Delete</th>
-                                <th>Edit</th>
+                                <th>Details</th>
                             </tr>
                         </thead>
                         <tbody>
-                        	@foreach($categories as $category)
+                        	@foreach($products as $product)
 								<tr>
-	                                <td>{{ $category->id }}</td>
-	                                <td>{{ $category->name }}</td>
+	                                <td>{{ $product->id }}</td>
+	                                <td>{{ $product->name }}</td>
+                                    <td>{{ $product->category->name }}</td>
+                                    <td>{{ $product->price }}</td>
+                                    <td>{{ $product->quantity }}</td>
+                                    <td>{{ $product->warranty }}</td>
 	                                <td class="center">
                                         <i class="fa fa-trash-o  fa-fw"></i>
-                                        <a href="{{ route('categories.destroy',$category)}}">Delete</a>
+                                        <a href="{{ route('products.destroy',$product)}}">Delete</a>
                                     </td>
 	                                <td class="center">
-                                        <i class="fa fa-pencil fa-fw"></i> 
-                                        <a href="{{route('categories.edit',$category)}}">Edit</a>
+                                        <i class="fa fa-info fa-fw"></i> 
+                                        <a href="{{route('products.edit',$product)}}">View details</a>
                                     </td>
 	                            </tr>
                         	@endforeach                        
                         </tbody>
-                        {{ $categories->links() }}
+                        {{ $products->links() }}
                     </table>
                 </div>
                 <!-- /.row -->

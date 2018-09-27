@@ -38,6 +38,8 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $user = User::create($request->all());
+        $user->password = bcrypt($user->password);
+        $user->save();
         return redirect()->route('users.create')->with('success', 'Create a new user successfully');;
     }
 
