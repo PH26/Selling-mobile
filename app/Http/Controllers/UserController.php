@@ -37,6 +37,14 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request,[
+           'email'=>'unique:users,email',
+           'tel'=>'numeric',
+        ],
+        [
+            'email.unique'=>'Email already exists',
+            'tel.numeric'=>'Tel must be numeric'
+        ]);
         $user = User::create($request->all());
         $user->password = bcrypt($user->password);
         $user->save();
@@ -74,6 +82,14 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
+        $this->validate($request,[
+           'email'=>'unique:users,email',
+           'tel'=>'numeric',
+        ],
+        [
+            'email.unique'=>'Email already exists',
+            'tel.numeric'=>'Tel must be numeric'
+        ]);
         $user->update($request->all());
         return redirect()->route('users.list')->with('success', 'Edit a user successfully');
     }

@@ -18,7 +18,7 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->integer('category_id')->unsigned()->nullable();
             $table->foreign('category_id')->references('id')->on('categories');
-            $table->decimal('price');
+            $table->string('price');
             $table->integer('quantity');
             $table->string('screen');
             $table->string('os');
@@ -29,7 +29,7 @@ class CreateProductsTable extends Migration
             $table->string('memory');
             $table->string('sim');
             $table->string('pin');
-            $table->string('warranty');
+            $table->integer('warranty');
             $table->timestamps();
         });
     }

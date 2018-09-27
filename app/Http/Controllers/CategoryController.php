@@ -36,6 +36,10 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request,
+                            ['name'=>'unique:categories,name'],
+                            ['name.unique'=> $request->name.' already exists']
+                        );
         $category = Category::create($request->all());
         return redirect()->route('categories.create')->with('success', 'Create a new category successfully');
     }
@@ -71,6 +75,10 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
+        $this->validate($request,
+                            ['name'=>'unique:categories,name'],
+                            ['name.unique'=> $request->name.' already exists']
+                        );
        $category->update($request->all());
        return redirect()->route('categories.list')->with('success', 'Edit a category successfully');
     }

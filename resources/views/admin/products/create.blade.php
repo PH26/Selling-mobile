@@ -14,6 +14,15 @@
                                 {{ session('success') }}
                             </div>
                         @endif     
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif   
                     </div>
                     <!-- /.col-lg-12 -->
                     <div class="col-md-7" style="padding-bottom:120px">
@@ -42,8 +51,8 @@
 
                             <div class="form-group">
                                 <label>Quantity</label>
-                                <input class="form-control" required=""  name="quantity" 
-                                    placeholder="Please enter quantity" />
+                                <input class="form-control" type="number" min="1" required=""  
+                                    name="quantity" placeholder="Please enter quantity" />
                             </div>
                             <div class="form-group">
                                 <label>Screen</label>
@@ -92,8 +101,8 @@
                             </div>
                             <div class="form-group">
                                 <label>Warranty</label>
-                                <input class="form-control" required=""  name="warranty" 
-                                    placeholder="Please enter warranty" />
+                                <input class="form-control" type="number" min="1" required=""  
+                                name="warranty" placeholder="Please enter warranty" />
                             </div>
                             <div class="form-group">
                                 <label>Images</label>

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
@@ -142,34 +142,15 @@
               <!-- User image -->
               <li class="user-header">
                 <img src="{{ asset('dist/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image">
-
                 <p>
                   {{Auth::user()->name}} - Web Developer
                   <small>Member since {{Auth::user()->created_at}}</small>
                 </p>
-              </li>
-              <!-- Menu Body -->
-              <li class="user-body">
-                <div class="row">
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Followers</a>
-                  </div>
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Sales</a>
-                  </div>
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Friends</a>
-                  </div>
-                </div>
-                <!-- /.row -->
-              </li>
+              </li>          
               <!-- Menu Footer-->
               <li class="user-footer">
-                <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">Profile</a>
-                </div>
                 <div class="pull-right">
-                  <a href="{{route('admin.logout')}}" class="btn btn-default btn-flat">Sign out</a>
+                  <a href="{{route('admin.logout')}}" class="btn btn-default btn-flat">Logout</a>
                 </div>
               </li>
             </ul>
@@ -212,7 +193,7 @@
       <ul class="sidebar-menu">
         <li class="header">MAIN NAVIGATION</li>
         <li class="treeview">
-          <a href="#">
+          <a href="{{ route('admin.index') }}">
             <i class="fa fa-home"></i> <span>Home</span>
           </a>
         </li>
