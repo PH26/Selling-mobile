@@ -39,6 +39,14 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request,[
+           'name'=>'unique:products,name',
+           'price'=>'numeric',
+        ],
+        [
+            'name.unique'=>'Name already exists',
+            'price.numeric'=>'Price must be numeric'
+        ]);
         $product = Product::create($request->all());
         if($request->file('images')){
             foreach($request->file('images') as $image){
@@ -85,8 +93,16 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
+        $this->validate($request,[
+           'name'=>'unique:products,name',
+           'price'=>'numeric',
+        ],
+        [
+            'name.unique'=>'Name already exists',
+            'price.numeric'=>'Price must be numeric'
+        ]);
         $product->update($request->all());
-       return redirect()->route('products.list')->with('success', 'Edit a product successfully');
+        return redirect()->route('products.list')->with('success', 'Edit a product successfully');
     }
 
     /**

@@ -9,7 +9,7 @@ Route::post('/admin/login','AdminController@login')->name("admin.login");
 Route::get('/admin/logout','AdminController@logout')->name('admin.logout'); 
 
 Route::group(['prefix'=>'admin','middleware'=>'admin'],function () {
-		Route::get('/', function (){ return view('admin.layouts.master'); })->name('admin.index');
+		Route::get('/', function (){ return view('admin.index'); })->name('admin.index');
 		
 		Route::group(['prefix'=>'categories'],function () {
 		    Route::get('/', 'CategoryController@list')->name("categories.list");

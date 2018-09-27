@@ -13,7 +13,16 @@
                             <div class="alert" style="background:#dff0d8; color:#4f844f" role="alert">
                                 {{ session('success') }}
                             </div>
-                        @endif     
+                        @endif
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif       
                     </div>
                     <!-- /.col-lg-12 -->
                     <div class="col-md-7" style="padding-bottom:120px">
