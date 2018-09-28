@@ -6,6 +6,8 @@ use App\Product;
 use App\Image;
 use App\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\File;
 
 class ProductController extends Controller
 {
@@ -50,11 +52,9 @@ class ProductController extends Controller
         $product = Product::create($request->all());
         if($request->file('images')){
             foreach($request->file('images') as $image){
-                $image_name= date('Y-m-d H:i:s').$image->getClientOriginalName();
-                $path= 'images';
-                $image->move($path, $image_name);
+                $path=$image->store('images');
                 $img= Image::create([
-                    'url' =>$path.'/'.$image_name,
+                    'url' =>$path, 
                     'product_id' => $product->id
                 ]);
             }
