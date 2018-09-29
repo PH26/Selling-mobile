@@ -35,20 +35,22 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
+                                <th>Image</th>
                                 <th>Name</th>
                                 <th>Category</th>
                                 <th>Price</th>
                                 <th>Quantity</th>
                                 <th>Warranty</th>
                                 <th>Delete</th>
-                                <th>Details</th>
+                                <th>Edit</th>
                             </tr>
                         </thead>
                         <tbody>
                         	@foreach($products as $product)
 								<tr>
-	                                <td>{{ $product->id }}</td>
-	                                <td>{{ $product->name }}</td>
+                                    <td>{{ $product->id }}</td>
+    	                            <td><img src="{{asset('storage/'.$product->images[0]->url)}}" width="80px" height="50px"></td>
+    	                            <td>{{ $product->name }}</td>
                                     <td>{{ $product->category->name }}</td>
                                     <td>{{ $product->price }}</td>
                                     <td>{{ $product->quantity }}</td>
@@ -59,7 +61,7 @@
                                     </td>
 	                                <td class="center">
                                         <i class="fa fa-info fa-fw"></i> 
-                                        <a href="{{route('products.edit',$product)}}">View details</a>
+                                        <a href="{{route('products.edit',$product)}}">Edit</a>
                                     </td>
 	                            </tr>
                         	@endforeach                        
