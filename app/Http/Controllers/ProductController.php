@@ -57,7 +57,7 @@ class ProductController extends Controller
                     'url' =>$path, 
                     'product_id' => $product->id
                 ]);
-            }
+            }        
         }
         return redirect()->route('products.create')->with('success', 'Create a new product successfully');
     }
