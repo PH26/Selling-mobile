@@ -1,8 +1,8 @@
 <?php
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('pages.index');
+})->name('index');
 
 Route::get('/admin/login','AdminController@getLogin')->name('admin.getLogin'); 
 Route::post('/admin/login','AdminController@login')->name("admin.login");

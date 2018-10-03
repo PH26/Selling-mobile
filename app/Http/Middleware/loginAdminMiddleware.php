@@ -19,10 +19,10 @@ class loginAdminMiddleware
     {
        if (Auth::check()) {
             $user=Auth::user();
-            if ($user->user_type == User::ADMIN_TYPE  && $user->active==1) {
+            if ($user->user_type == User::ADMIN_TYPE) {
                 return $next($request);
             }else{
-                return redirect()->route('admin.getLogin');
+                return redirect()->route('admin.getLogin')->with('error', 'Incorrect information!!!');
             }
            
        }else{
