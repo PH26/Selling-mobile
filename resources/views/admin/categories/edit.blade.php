@@ -20,7 +20,7 @@
                         @endif
                     </div>                
                     <!-- /.col-lg-12 -->
-                    <div class="col-lg-7" style="padding-bottom:120px">
+                    <div class="col-lg-7" style="padding-bottom:50px">
                         <form action="{{ route('categories.update',$category)}}" method="POST">
                             @csrf
                             <input name="_method" type="hidden" value="PUT">
@@ -29,8 +29,8 @@
                                 <input class="form-control" required="" name="name" value="{{ $category->name }}"  placeholder="Please enter category name" />
                             </div>
                            
-                            <button type="submit" class="btn btn-default">Edit</button>
-                            <button type="reset" class="btn btn-default">Reset</button>
+                            <button type="submit" class="btn btn-primary">Edit</button>
+                            <button type="reset" class="btn btn-primary">Reset</button>
                             <hr>
 
                             <div class="form-group">

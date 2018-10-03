@@ -81,7 +81,8 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        return view('admin.products.edit')->with('product', $product);
+        $categories= Category::all();
+        return view('admin.products.edit',compact('product', 'categories'));
     }
 
     /**
@@ -94,7 +95,6 @@ class ProductController extends Controller
     public function update(Request $request, Product $product)
     {
         $this->validate($request,[
-           'name'=>'unique:products,name',
            'price'=>'numeric',
         ],
         [

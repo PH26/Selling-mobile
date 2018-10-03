@@ -20,13 +20,14 @@
                         @endif
                     </div>     
                     <!-- /.col-lg-12 -->
-                    <div class="col-lg-7" style="padding-bottom:120px">
+                    <div class="col-lg-7" style="padding-bottom:10px">
                         <form action="{{ route('users.update',$user)}}" method="POST">
                             @csrf
                             <input name="_method" type="hidden" value="PUT">
                             <div class="form-group">
                                 <label>ID</label>
                                 <input class="form-control" disabled name="id" value="{{ $user->id }}"/>
+                            </div>
                             <div class="form-group">
                                 <label>Name</label>
                                 <input class="form-control" required="" name="name" value="{{ $user->name }}"       placeholder="Please enter user name" />
@@ -66,13 +67,8 @@
                                 </label>
                             </div>
                            
-                            <button type="submit" class="btn btn-default">Edit</button>
-                            <button type="reset" class="btn btn-default">Reset</button>
-                            <hr>
-
-                            <div class="form-group">
-                                <a style="font-size: 18px;" href="{{route('users.list')}}">Back to list</a>
-                            </div>                      
+                            <button type="submit" class="btn btn-primary">Edit</button>
+                            <button type="reset" class="btn btn-primary">Reset</button>                     
                         <form>
                     </div>
                 </div>
