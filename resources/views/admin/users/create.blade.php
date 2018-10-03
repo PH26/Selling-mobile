@@ -25,7 +25,7 @@
                         @endif       
                     </div>
                     <!-- /.col-lg-12 -->
-                    <div class="col-md-7" style="padding-bottom:120px">
+                    <div class="col-md-7" style="padding-bottom:50px">
                         <form action="{{ route('users.store')}}" method="POST">
                           	@csrf
                             <div class="form-group">
@@ -56,13 +56,8 @@
                                 </select>
                             </div>
                             
-                            <button type="submit" class="btn btn-default">Add</button>
-                            <button type="reset" class="btn btn-default">Reset</button>
-                            <hr>
-
-                            <div class="form-group">
-                                <a style="font-size: 18px;" href="{{route('users.list')}}">Back to list</a>
-                            </div> 
+                            <button type="submit" class="btn btn-primary">Add</button>
+                            <button type="reset" class="btn btn-primary">Reset</button>
                         <form>
                     </div>
                 </div>

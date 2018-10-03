@@ -25,7 +25,7 @@
                         @endif     
                     </div>
                     <!-- /.col-lg-12 -->
-                    <div class="col-md-7" style="padding-bottom:120px">
+                    <div class="col-md-7" style="padding-bottom:50px">
                         <form action="{{ route('categories.store')}}" method="POST">
                           	@csrf
                             <div class="form-group">
@@ -34,8 +34,8 @@
                                     placeholder="Please enter category name" />
                             </div>
                             
-                            <button type="submit" class="btn btn-default">Add</button>
-                            <button type="reset" class="btn btn-default">Reset</button>
+                            <button type="submit" class="btn btn-primary">Add</button>
+                            <button type="reset" class="btn btn-primary">Reset</button>
                             <hr>
 
                             <div class="form-group">
