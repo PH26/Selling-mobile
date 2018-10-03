@@ -31,7 +31,14 @@
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
-    <p class="login-box-msg">Sign in to start your session</p>
+    
+      @if (session('error'))
+          <p class="login-box-msg" style="color: red">{{ session('error') }}</p>
+      @else
+            <p class="login-box-msg">Sign in to start your session</p>
+      @endif
+      
+   
 
     <form action="{{ route('admin.login') }}" method="POST">
        @csrf
