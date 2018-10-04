@@ -9,7 +9,7 @@
 		color: white;
 	}
 	.panel-body{
-		background: #f0f5f5;
+		background: white;
 	}
 	.panel-body a{		
 		color: black;
@@ -25,7 +25,7 @@
 	  	<div class="panel-body">
 			<ul class="nav nav-pills nav-stacked">
 				@foreach($categories as $category)
-					<li role="presentation"><a href="#">{{ $category->name }}</a></li>
+					<li role="presentation"><a href="{{route('category',$category->id)}}">{{ $category->name }}</a></li>
 				@endforeach
 			</ul>
 	  	</div>

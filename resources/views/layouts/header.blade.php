@@ -32,7 +32,7 @@
 	<div class="row fixed-bottom">
 
 		<div class="col-md-3">
-			<img src="{{asset('dist/img/sophia.png')}}">
+			<a href="{{route('index')}}"><img src="{{asset('dist/img/sophia.png')}}"></a>
 		</div>
 
 		<div class="col-md-3">
