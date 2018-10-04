@@ -1,12 +1,16 @@
 <?php
 
-Route::get('/','PageController@index')->name('index'); 
+Route::get('/','PageController@index')->name('index');
+Route::get('/category/{id}','PageController@category')->name('category');
+Route::get('/product/{product}','PageController@product')->name('product');  
 
+//Begin route of Admin
 Route::get('/admin/login','AdminController@getLogin')->name('admin.getLogin'); 
 Route::post('/admin/login','AdminController@login')->name("admin.login");
 Route::get('/admin/logout','AdminController@logout')->name('admin.logout'); 
 
 Route::group(['prefix'=>'admin','middleware'=>'admin'],function () {
+
 		Route::get('/', function (){ return view('admin.index'); })->name('admin.index');
 		
 		Route::group(['prefix'=>'categories'],function () {
@@ -37,7 +41,7 @@ Route::group(['prefix'=>'admin','middleware'=>'admin'],function () {
 		});
 
 });
-
+// End route of Admin
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
