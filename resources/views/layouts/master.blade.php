@@ -23,7 +23,7 @@
         @include('layouts.header')
         @include('layouts.slide')
         <div class="row" style="margin-left: 2.8em">
-                @include('layouts.menu')
+            @include('layouts.menu')
             <div class="col-md-9">
                 @yield('content')
             </div>

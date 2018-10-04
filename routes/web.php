@@ -1,8 +1,13 @@
 <?php
 
+//Begin route of Pages
 Route::get('/','PageController@index')->name('index');
 Route::get('/category/{id}','PageController@category')->name('category');
-Route::get('/product/{product}','PageController@product')->name('product');  
+Route::get('/product/{product}','PageController@product')->name('product'); 
+ 
+// End route of Pages
+
+//************************************************************************//
 
 //Begin route of Admin
 Route::get('/admin/login','AdminController@getLogin')->name('admin.getLogin'); 
@@ -42,6 +47,7 @@ Route::group(['prefix'=>'admin','middleware'=>'admin'],function () {
 
 });
 // End route of Admin
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
