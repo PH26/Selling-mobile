@@ -1,24 +1,28 @@
 @extends('layouts.master')
 @section('content')
-    <div class="ool-md-10">    
-      <h3>Some of my Work</h3><br>
-      <div class="row">
-        <div class="col-sm-3">
-          <p>Some text..</p>
-          <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
+    <style>
+        .thumbnail img{
+            height: 15em;
+            width: 90%;
+            object-fit: cover;
+        }
+        b{
+            color: red;
+        }  
+    </style>
+    
+    @foreach($products as $product)
+        <div class="col-md-3">
+        <div class="thumbnail">
+            <img src="{{asset('storage/'.$product->images[0]->url)}}">
+            <div class="caption">
+                <p>{{ $product->name }}</p>
+                <p><b>{{ $product->price }}</b></p>
+                <button class="btn btn-success">
+                    <span class="fa fa-shopping-cart fa-1x"> Add to cart</span> 
+                </button>
+            </div>
         </div>
-        <div class="col-sm-3"> 
-          <p>Some text..</p>
-          <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
-        </div>
-        <div class="col-sm-3"> 
-          <p>Some text..</p>
-          <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
-        </div>
-        <div class="col-sm-3">
-          <p>Some text..</p>
-          <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
-        </div>
-      </div>
     </div>
+    @endforeach 
 @endsection 

@@ -3,9 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Category;
+use App\Product;
 
 class PageController extends Controller
 {
+
+    public function __construct(){
+        $categories = Category::all();
+        view()->share('categories',$categories);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +20,8 @@ class PageController extends Controller
      */
     public function index()
     {
-        //
+        $products = Product::all();  
+        return view('pages.index',compact('products'));
     }
 
     /**

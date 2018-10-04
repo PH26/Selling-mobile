@@ -12,8 +12,6 @@
   <link rel="stylesheet" href="{{ asset('fonts/font-awesome.min.css')}}">
   <!-- Ionicons -->
   <link rel="stylesheet" href="{{ asset('fonts/ionicons.min.css')}}">
-  <!-- Customer Css -->
-  <link rel="stylesheet" href="{{ asset('css/style.css')}}">
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -22,16 +20,16 @@
   <![endif]-->
 </head>
 <body>
-  <div class="container">
-      @include('layouts.header')
-      @include('layouts.slide')  
-      @include('layouts.menu')
-      <div class="col-md-10">
-        @yield('content')
-      </div>
-      @include('layouts.footer')
-  </div>
-
+        @include('layouts.header')
+        @include('layouts.slide')
+        <div class="row" style="margin-left: 2.8em">
+                @include('layouts.menu')
+            <div class="col-md-9">
+                @yield('content')
+            </div>
+        </div>
+        @include('layouts.footer')
+        
 <!-- jQuery 2.2.3 -->
 <script src="{{ asset('plugins/jQuery/jquery-2.2.3.min.js')}}"></script>
 <!-- Bootstrap 3.3.6 -->

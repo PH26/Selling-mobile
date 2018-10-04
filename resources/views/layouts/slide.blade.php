@@ -1,5 +1,8 @@
 <style>
-	.slide img{
+	.carousel-inner{
+		height: 27em;
+		width: 94%;
+		object-fit: cover;
 	}
 </style>
 <div class="slide">
@@ -11,7 +14,7 @@
 	    </ol>
 	    <div class="carousel-inner">
 	         <div class="item active">
-	            <img alt="First slide" src="{{asset('dist/img/section6_banner.png')}}">
+	            <img alt="First slide" src="{{asset('dist/img/photo2.png')}}">
 	            
 	        </div>
 	        <div class="item">
