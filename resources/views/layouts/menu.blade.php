@@ -1,26 +1,43 @@
 <style>
-	.nav{
-		padding-left: 0;
+	.panel{
+		border:2px solid #00e68a;
+	}
+	.panel-heading{
+		background: #00e68a;
+		border-radius: 0;
+		font-weight: bold;
+		color: white;
+	}
+	.panel-body{
+		background: #f0f5f5;
+	}
+	.panel-body a{		
+		color: black;
+	}
+	.panel-body a:hover{
+		color: red;
 	}
 </style>
-
 <div class="col-md-2 nav">
-	<div class="panel panel-primary">
-	  	<div class="panel-heading">
-	    	<h3 class="panel-title">Category</h3>
-	  	</div>
+	<div class="panel">
+
+	  	<div class="panel-heading">CATEGORIES</div>
 	  	<div class="panel-body">
 			<ul class="nav nav-pills nav-stacked">
-			  	<li role="presentation"><a href="#">Home</a></li>
-			  	<li role="presentation"><a href="#">Profile</a></li>
-			 	<li role="presentation"><a href="#">Messages</a></li>
-			  	<li role="presentation"><a href="#">Home</a></li>
-			  	<li role="presentation"><a href="#">Profile</a></li>
-			  	<li role="presentation"><a href="#">Messages</a></li>
-			  	<li role="presentation"><a href="#">Home</a></li>
-			  	<li role="presentation"><a href="#">Profile</a></li>
-			  	<li role="presentation"><a href="#">Messages</a></li>
+				@foreach($categories as $category)
+					<li role="presentation"><a href="#">{{ $category->name }}</a></li>
+				@endforeach
 			</ul>
 	  	</div>
+
+	  	<div class="panel-heading">DANH MỤC 2</div>
+	  	<div class="panel-body">
+			<ul class="nav nav-pills nav-stacked">
+				<li role="presentation"><a href="#">A</a></li>
+				<li role="presentation"><a href="#">B</a></li>
+				<li role="presentation"><a href="#">C</a></li>
+			</ul>
+	  	</div>
+
 	</div>
 </div>
