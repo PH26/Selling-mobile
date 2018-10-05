@@ -17,6 +17,9 @@
             text-decoration: none;
             color: #288ad6;
         }
+        .thumbnail:hover{
+            border: 1px solid red;         
+        }
         .thumbnail:hover img{
             -webkit-transform: scale(1.05);
             -moz-transform: scale(1.05);
@@ -24,6 +27,10 @@
             transform: scale(1.05);
             -webkit-transition: transform 0.5s; 
             transition: transform 0.5s; 
+        }
+        .pagination{
+            display: inline-flex;
+            width: 50%;
         }
     </style>
     
@@ -40,5 +47,9 @@
                 </div>
             </div>
         </div>
-    @endforeach 
+    @endforeach
+    <div class="col-md-12">
+        {{ $products->links() }}
+    </div>
+    
 @endsection 

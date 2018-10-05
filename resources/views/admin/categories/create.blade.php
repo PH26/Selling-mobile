@@ -31,7 +31,7 @@
                             <div class="form-group">
                                 <label>Name</label>
                                 <input class="form-control" required=""  name="name" 
-                                    placeholder="Please enter category name" />
+                                    placeholder="Please enter category name" value="{{ old('name') }}"/>
                             </div>
                             
                             <button type="submit" class="btn btn-primary">Add</button>

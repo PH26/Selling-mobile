@@ -5,6 +5,10 @@ Route::get('/','PageController@index')->name('index');
 Route::get('/category/{id}','PageController@category')->name('category');
 Route::get('/product/{product}','PageController@product')->name('product'); 
  
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
 // End route of Pages
 
 //************************************************************************//
@@ -48,6 +52,3 @@ Route::group(['prefix'=>'admin','middleware'=>'admin'],function () {
 });
 // End route of Admin
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');

@@ -30,23 +30,23 @@
                           	@csrf
                             <div class="form-group">
                                 <label>Name</label>
-                                <input class="form-control" required=""  name="name" 
+                                <input class="form-control" required=""  name="name" value="{{ old('name') }}"
                                     placeholder="Please enter user name" />
                             </div>
                             <div class="form-group">
                                 <label>Tel</label>
-                                <input class="form-control" required=""  name="tel" 
+                                <input class="form-control" required=""  name="tel" value="{{ old('tel') }}"
                                     placeholder="Please enter user tel" />
                             </div>
                             <div class="form-group">
                                 <label>Email</label>
                                 <input class="form-control" type="email" required=""  name="email" 
-                                    placeholder="Please enter user email" />
+                                    value="{{ old('email') }}"  placeholder="Please enter user email" />
                             </div>
                             <div class="form-group">
                                 <label>Password</label>
                                 <input class="form-control" type="password" required=""  name="password" 
-                                    placeholder="Please enter user password" />
+                                    value="{{ old('password') }}"  placeholder="Please enter user password" />
                             </div>
                             <div class="form-group">
                                 <label>Type</label>
