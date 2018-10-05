@@ -14,7 +14,6 @@
 		font-size: 200%;
 	}
 	.properties{
-		ơa
 		border-top:1px solid #d1e0e0; 
 		border-bottom:1px solid #d1e0e0;
 		font-size: 105%;
@@ -68,15 +67,6 @@
 			  			<?php $i++ ?>
 			  		@endforeach
 			 	</div>
-			  	<!-- Controls -->
-			  	<a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-			    	<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-			    	<span class="sr-only">Previous</span>
-			  	</a>
-			  	<a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-			   	 	<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-			    	<span class="sr-only">Next</span>
-			 	</a>
 			</div>
     	</div>
 
