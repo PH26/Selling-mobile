@@ -8,6 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>Sophia | @yield('title')</title>
+    <link rel="SHORTCUT ICON" href="{{asset('dist/img/icon.png')}}">
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
