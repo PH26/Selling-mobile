@@ -29,15 +29,5 @@
 				@endforeach
 			</ul>
 	  	</div>
-
-	  	<div class="panel-heading">DANH MỤC 2</div>
-	  	<div class="panel-body">
-			<ul class="nav nav-pills nav-stacked">
-				<li role="presentation"><a href="#">A</a></li>
-				<li role="presentation"><a href="#">B</a></li>
-				<li role="presentation"><a href="#">C</a></li>
-			</ul>
-	  	</div>
-
 	</div>
 </div>

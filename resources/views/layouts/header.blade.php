@@ -13,7 +13,7 @@
 	header img{
 		height: 4em;
 		width: 50%;
-		margin-left: 3em;
+		margin-left: 3.5em;
 	}
 	header .page{
 		font-weight: bold;
