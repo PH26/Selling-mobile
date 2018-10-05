@@ -16,14 +16,14 @@ class PageController extends Controller
     
     public function index()
     {
-        $products = Product::paginate(12);;  
+        $products = Product::paginate(16);;  
         return view('pages.index',compact('products'));
     }
 
     public function category($id)
     {
-        $products = Product::where('category_id',$id)->paginate(12);
-        return view('pages.category', compact('products'));
+        $products = Product::where('category_id',$id)->paginate(16);
+        return view('pages.index', compact('products'));
     }
 
     public function product(Product $product)

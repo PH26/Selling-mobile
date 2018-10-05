@@ -1,12 +1,9 @@
 <style>
-	*{
-		width: 100%;
-		margin:0 auto;
-		padding: 0;
-	}
+
 	footer{
 		background: #474b54;
 		margin-top: 1em;
+		clear: both;
 	}
 	footer h3{
 		color: #b2b5ba;

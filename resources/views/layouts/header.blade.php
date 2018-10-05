@@ -6,6 +6,9 @@
 	}
 	header{
 		background: #00e68a;
+		position: fixed;
+		z-index: 1000;
+		top: 0;
 	}
 	header img{
 		height: 4em;
