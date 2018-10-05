@@ -11,11 +11,13 @@
 	.panel-body{
 		background: white;
 	}
-	.panel-body a{		
+	.panel-body a{
+		font-weight: bold;		
 		color: black;
+		border-bottom: 1px solid gray;
 	}
 	.panel-body a:hover{
-		color: red;
+		color: #00e68a;
 	}
 </style>
 <div class="col-md-2 nav">
@@ -24,8 +26,9 @@
 	  	<div class="panel-heading">CATEGORIES</div>
 	  	<div class="panel-body">
 			<ul class="nav nav-pills nav-stacked">
+					<li role="presentation"><a href="{{route('index')}}">ALL</a></li>
 				@foreach($categories as $category)
-					<li role="presentation"><a href="{{route('category',$category->id)}}">{{ $category->name }}</a></li>
+					<li role="presentation"><a href="{{route('category',$category->id)}}">{{ strtoupper($category->name) }}</a></li>
 				@endforeach
 			</ul>
 	  	</div>

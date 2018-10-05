@@ -23,7 +23,8 @@ class PageController extends Controller
     public function category($id)
     {
         $products = Product::where('category_id',$id)->paginate(16);
-        return view('pages.index', compact('products'));
+        $category = Category::find($id);
+        return view('pages.index', compact('products','category'));
     }
 
     public function product(Product $product)

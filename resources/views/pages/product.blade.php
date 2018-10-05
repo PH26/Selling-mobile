@@ -5,8 +5,10 @@
 		background: white;
 	}
 	.product-name{
+		margin-top: 0.5em;
 		padding-left: 0.5em;
-		font-size: 200%;
+		font-size: 180%;
+		font-weight: bold;
 	}
 	.product-price{
 		color: red;
