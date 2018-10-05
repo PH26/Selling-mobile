@@ -1,6 +1,9 @@
 @extends('layouts.master')
 @section('content')
     <style>
+        .thumbnail{
+            height: 24em;
+        }
         .thumbnail img{
             height: 15em;
             width: 90%;

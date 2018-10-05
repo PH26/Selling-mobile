@@ -1,6 +1,6 @@
 <style>
 	.slide{
-		margin-top: 0.5em; 
+		margin-top: 5em; 
 	}
 	.carousel-inner{
 		height: 25em;
