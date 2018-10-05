@@ -39,13 +39,8 @@
 			<a href="{{route('index')}}"><img src="{{asset('dist/img/sophia.png')}}"></a>
 		</div>
 
-		<div class="col-md-3">
-			<div class="col-md-3 page"><a href="{{route('index')}}">HOME</a></div>
-			<div class="col-md-3 page"><a href="">ABOUT</a></div>
-			<div class="col-md-3 page"><a href="">CONTACT</a></div>
-		</div>
 
-		<div class="col-md-3">
+		<div class="col-md-5">
 			<form action="#" method="GET">
                 <div id="custom-search-input">
                     <div class="input-group col-md-10">
@@ -60,7 +55,7 @@
             <form> 
 		</div>
 
-		<div class="col-md-3">
+		<div class="col-md-4">
 			@if(Auth::check())
 				<div class="col-md-1 page">
 					<a href="{{route('home')}}"><span class="glyphicon glyphicon-user"></span></a>

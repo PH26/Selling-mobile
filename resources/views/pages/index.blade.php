@@ -7,7 +7,7 @@
             margin-bottom: 1em;
         }
         .thumbnail{
-            height: 24em;
+            height: 25em;
         }
         .thumbnail img{
             height: 15em;

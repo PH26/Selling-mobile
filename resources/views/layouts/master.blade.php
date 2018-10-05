@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Sophia Store - Siêu thị điện thoại chính hãng</title>
+  <link rel="SHORTCUT ICON" href="{{asset('dist/img/icon.png')}}">
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -25,7 +26,7 @@
         @include('layouts.slide')
         <div class="container" style="margin:0; width: 98%;" >
             @include('layouts.menu')
-            <div class="col-md-9">
+            <div class="col-md-10">
                 @yield('content')
             </div>
         </div>
