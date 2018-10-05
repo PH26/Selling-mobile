@@ -60,22 +60,14 @@
 		<div class="col-md-3">
 			@if(Auth::check())
 				<div class="col-md-1 page">
-					<div class="dropdown">
-					  <div class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown">
-					    <span class="glyphicon glyphicon-user"></span>
-					    <span class="caret"></span>
-					  </div>
-					  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-					    <li><a href="#">Profile</a></li>
-					    <li role="separator" class="divider"></li>
-					    <li><a href="#">Logout</a></li>
-					  </ul>
-					</div>
+					<a href="{{route('home')}}"><span class="glyphicon glyphicon-user"></span></a>
 				</div>
-				<div class="col-md-7 page"> {{Auth::user()->name}}</div> 
+				<div class="col-md-7 page">
+					<a href="{{route('home')}}">{{Auth::user()->name}}</a>
+				</div> 
 			@else
-				<div class="col-md-4 page"><a href="{{route('index')}}">REGISTER</a></div>
-				<div class="col-md-4 page"><a href="{{route('index')}}">LOGIN</a></div>
+				<div class="col-md-4 page"><a href="{{route('register')}}">REGISTER</a></div>
+				<div class="col-md-4 page"><a href="{{route('login')}}">LOGIN</a></div>
 			@endif		
 			<div class="col-md-4 page"><a href="{{route('index')}}"><span class="fa fa-shopping-cart fa-2x"></span></a></div>
 		</div>
