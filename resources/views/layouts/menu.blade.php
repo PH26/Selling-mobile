@@ -1,6 +1,7 @@
 <style>
 	.panel{
 		border:2px solid #00e68a;
+		margin-left: 2em
 	}
 	.panel-heading{
 		background: #00e68a;
