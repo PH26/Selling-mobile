@@ -21,14 +21,18 @@
 </head>
 <body style="background: #f0f5f5;">
         @include('layouts.header')
-        @include('layouts.slide')
+        <div class="container" style="margin: 0; width: 98%" >
+          @include('layouts.slide')
         <div class="row" style="margin-left: 2.8em">
             @include('layouts.menu')
             <div class="col-md-9">
                 @yield('content')
             </div>
         </div>
+        
+        </div>
         @include('layouts.footer')
+        
         
 <!-- jQuery 2.2.3 -->
 <script src="{{ asset('plugins/jQuery/jquery-2.2.3.min.js')}}"></script>
