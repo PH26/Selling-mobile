@@ -1,6 +1,11 @@
 @extends('layouts.master')
 @section('content')
     <style>
+        .category{
+            font-weight: bold;
+            font-size: 150%;
+            margin-bottom: 1em;
+        }
         .thumbnail{
             height: 24em;
         }
@@ -21,13 +26,13 @@
             color: #288ad6;
         }
         .thumbnail:hover{
-            border: 1px solid red;         
+            border: 2px solid #00e68a;         
         }
         .thumbnail:hover img{
-            -webkit-transform: scale(1.05);
-            -moz-transform: scale(1.05);
-            -ms-transform: scale(1.05);
-            transform: scale(1.05);
+            -webkit-transform: scale(1.04);
+            -moz-transform: scale(1.04);
+            -ms-transform: scale(1.04);
+            transform: scale(1.04);
             -webkit-transition: transform 0.5s; 
             transition: transform 0.5s; 
         }
@@ -36,7 +41,9 @@
             width: 50%;
         }
     </style>
-    
+    @if(isset($category))
+        <div class="col-md-12 category">{{ strtoupper($category->name)}}</div>   
+    @endif
     @foreach($products as $product)
         <div class="col-md-3">
             <div class="thumbnail">
