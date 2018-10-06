@@ -19,7 +19,7 @@ class AdminController extends Controller
     }
     public function login(Request $request)
     {
-        if (Auth::attempt(['email'=>$request->email,'password'=>$request->password])) {
+        if (Auth::attempt(['email'=>$request->email,'password'=>$request->password,'user_type'=>1])) {
             return redirect()->route('admin.index');
         }else{
             return redirect()->route('admin.getLogin')->with('error', 'Incorrect information!!!');
