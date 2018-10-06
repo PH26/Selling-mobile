@@ -57,9 +57,70 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function search(Request $request)
     {
-        //
+        if($request->ajax()){
+            $output = '';
+            $query = $request->get('query');
+            if($query != ''){
+                $data = User::where('id', 'like', '%'.$query.'%')
+                        ->orWhere('name', 'like', '%'.$query.'%')
+                        ->orWhere('tel', 'like', '%'.$query.'%')
+                        ->orWhere('email', 'like', '%'.$query.'%') 
+                        ->orWhere('user_type', 'like', '%'.$query.'%')
+                        ->orderBy('id', 'desc')->get();
+            }
+            else{
+                $data = User::orderBy('id', 'desc')->get();
+            }
+            $total_row = $data->count();
+            if($total_row > 0){
+                foreach($data as $row){
+                    $user = User::find($row->id);
+                    
+                    $type = 'Admin';
+                    if($user->user_type == 0)
+                        $type = 'Customer';
+
+                    $active = '<span class="fa fa-check-square-o fa-fw" style="color:green"></span>';
+                    if($row->active == 0)
+                        $active = '<span class="fa  fa-minus-square-o  fa-fw" style="color:red"></span>';
+
+                    $delete='users/delete/'.$user->id;
+                    $edit='users/edit/'.$user->id;
+
+                    $output .= '
+                                <tr>
+                                    <td>'.$user->id.'</td>
+                                    <td>'.$user->name.'</td>
+                                    <td>'.$user->tel.'</td>
+                                    <td>'.$user->email.'</td>
+                                    <td>'.$type.'</td>
+                                    <td>'.$active.'</td>
+                                    <td>
+                                        <i class="fa fa-trash-o  fa-fw"></i>
+                                        <a href="'.$delete.'">Delete</a>
+                                    </td>
+                                    <td>
+                                        <i class="fa fa-pencil fa-fw"></i>
+                                        <a href="'.$edit.'">Edit</a>
+                                    </td>
+                                </tr>';
+                }
+            }
+            else{
+                $output =   '
+                                <tr>
+                                    <td align="center" colspan="5">No Data Found</td>
+                                </tr>
+                            ';
+            }
+            $data = array(
+                            'table_data'  => $output,
+                            'total_data'  => $total_row
+                        );
+            echo json_encode($data);
+        }
     }
 
     /**

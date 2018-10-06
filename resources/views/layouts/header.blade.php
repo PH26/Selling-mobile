@@ -57,10 +57,10 @@
 
 		<div class="col-md-4">
 			@if(Auth::check())
-				<div class="col-md-1 page">
+				<div class="col-md-1 col-md-offset-2 page">
 					<a href="{{route('home')}}"><span class="glyphicon glyphicon-user"></span></a>
 				</div>
-				<div class="col-md-7 page">
+				<div class="col-md-5 page">
 					<a href="{{route('home')}}">{{Auth::user()->name}}</a>
 				</div> 
 			@else

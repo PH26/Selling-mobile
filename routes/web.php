@@ -24,6 +24,7 @@ Route::group(['prefix'=>'admin','middleware'=>'admin'],function () {
 		
 		Route::group(['prefix'=>'categories'],function () {
 		    Route::get('/', 'CategoryController@list')->name("categories.list");
+		    Route::get('/search', 'CategoryController@search')->name("categories.search");
 		    Route::get('/create', 'CategoryController@create')->name("categories.create");
 		    Route::post('/create', 'CategoryController@store')->name("categories.store");
 		    Route::get('/edit/{category}', 'CategoryController@edit')->name("categories.edit");
@@ -33,6 +34,7 @@ Route::group(['prefix'=>'admin','middleware'=>'admin'],function () {
 
 		Route::group(['prefix'=>'users'],function () {
 		    Route::get('/', 'UserController@list')->name("users.list");
+		    Route::get('/search', 'UserController@search')->name("users.search");
 		    Route::get('/create', 'UserController@create')->name("users.create");
 		    Route::post('/create', 'UserController@store')->name("users.store");
 		    Route::get('/edit/{user}', 'UserController@edit')->name("users.edit");
@@ -42,9 +44,10 @@ Route::group(['prefix'=>'admin','middleware'=>'admin'],function () {
 
 		Route::group(['prefix'=>'products'],function () {
 		    Route::get('/', 'ProductController@list')->name("products.list");
+		    Route::get('/search', 'ProductController@search')->name("products.search");
 		    Route::get('/create', 'ProductController@create')->name("products.create");
 		    Route::post('/create', 'ProductController@store')->name("products.store");
-		    Route::get('/edit/{product}', 'ProductController@edit')->name("products.edit");
+		    Route::get('/show/{product}', 'ProductController@show')->name("products.show");
 		    Route::put('/edit/{product}', 'ProductController@update')->name("products.update");
 		    Route::get('/delete/{product}','ProductController@destroy')->name("products.destroy");
 		});
