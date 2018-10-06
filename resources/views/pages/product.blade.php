@@ -18,19 +18,18 @@
 	.properties{
 		border-top:1px solid #d1e0e0; 
 		border-bottom:1px solid #d1e0e0;
-		font-size: 105%;
+		font-size: 90%;
 		padding: 0.5em 0;
 	}
 	.super{
 		height: 30em;
-		padding: 4em 0;
 	}
 	.super .item{
 		width: 60%;
 		object-fit: cover;
 	}
 	.buy-now{
-		margin-top: 1em;
+		margin-top: 0.5em;
 		border-radius: 0.3em;
 		background: #ff751a;
 		text-align: center;
@@ -115,7 +114,7 @@
           		<div class="col-md-8">{{$product->warranty}} months</div>
           	</div>
           	<a class="col-md-12 buy-now" href="#">
-          		<p style="font-weight: bold; font-size: 120%; padding-top: 0.4em;">BUY NOW</p>
+          		<p style="font-weight: bold; font-size: 115%; padding-top: 0.3em;">BUY NOW</p>
 				<p style="padding-bottom: 0.1em;">Delivery in a hour or get at the supermarket</p>
           	</a>
     	</div>
