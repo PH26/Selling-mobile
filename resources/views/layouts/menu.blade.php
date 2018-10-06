@@ -23,7 +23,6 @@
 </style>
 <div class="col-md-2 nav">
 	<div class="panel">
-
 	  	<div class="panel-heading">CATEGORIES</div>
 	  	<div class="panel-body">
 			<ul class="nav nav-pills nav-stacked">
