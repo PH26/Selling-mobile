@@ -98,9 +98,15 @@ class CategoryController extends Controller
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
-    {
-        $category->delete();
-        return redirect()->route('categories.list')->with('success', 'Delete a new category successfully');
+    public function destroy($id)
+    {   
+        $category = Category::find($id);
+        $size = count($category->products);
+        if ($size == 0) {
+            $category->delete();
+            return redirect()->route('categories.list')->with('success', 'Delete a new category successfully');
+        }
+        return redirect()->route('categories.list')->with('error', 'Cannot delete!');
+        
     }
 }

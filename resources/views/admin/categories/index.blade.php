@@ -3,13 +3,19 @@
 <div class="container">
    <div class="panel panel-default">
         <div class="panel-heading">List Categories</div>
+        <!-- Button trigger modal -->
         <div class="panel-body">
             <div>            
                 @if (session('success'))
                     <div class="alert" style="background:#dff0d8; color:#4f844f" role="alert">
                         {{ session('success') }}
                     </div>
-                @endif     
+                @endif
+                 @if (session('error'))
+                    <div class="alert alert-danger" role="alert">
+                        {{ session('error') }}
+                    </div>
+                @endif      
             </div>
             <div class="table-responsive">
                 <div class="col-md-12">
@@ -40,8 +46,8 @@
                         <tr>
                             <th>ID</th>
                             <th>Name</th>
-                            <th>Delete</th>
                             <th>Edit</th>
+                            <th>Delete</th>
                         </tr>
                     </thead>
                    <tbody>
@@ -49,15 +55,15 @@
                             <tr>
                                 <td>{{ $category->id }}</td>
                                 <td>{{ $category->name }}</td>
-                                <td class="center">
-                                    <a href="{{ route('categories.destroy',$category)}}">
-                                        <i class="fa fa-trash-o  fa-fw" style="color:black"></i>
-                                    </a>
-                                </td>
                                 <td>
                                     <a href="{{ route('categories.edit',$category)}}">
                                         <i class="fa fa-pencil fa-fw" style="color:black"></i>
                                     </a>
+                                </td>
+                                <td class="center">
+                                    <button type="button" value="{{$category->id}}" class="btn btn-danger">
+                                        <i class="fa fa-trash-o  fa-fw" style="color:black"></i>
+                                    </button>                                  
                                 </td>
                             </tr>
                         @endforeach                  
@@ -71,7 +77,14 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
 $(document).ready(function(){
-
+    var button = $('.btn-danger');
+    button.click(function(){
+        if (confirm("Do you want to delete?")) {
+            var url = '{{ route("categories.destroy", ":id") }}';
+            url = url.replace(':id', $(this).val());
+            window.location.href=url;
+        }
+    });
 });
 </script>
 @stop
