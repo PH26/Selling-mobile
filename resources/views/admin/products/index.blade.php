@@ -4,10 +4,7 @@
    <div class="panel panel-default">
         <div class="panel-heading">List Products</div>
         <div class="panel-body">
-            <div class="form-group">
-                <input type="text" name="search" id="search" class="form-control" placeholder="Search products..." />
-            </div>
-            <div>
+            <div>            
                 @if (session('success'))
                     <div class="alert" style="background:#dff0d8; color:#4f844f" role="alert">
                         {{ session('success') }}
@@ -15,7 +12,29 @@
                 @endif     
             </div>
             <div class="table-responsive">
-                <h3 align="center">Total: <span id="total_records"></span></h3>
+                <div class="col-md-12">
+                    <div class="col-md-7">
+                        <button class="btn btn-info btn-md" type="button">
+                            <a href="{{route('products.list')}}" style="color:white; font-weight: bold;">LIST ALL</a>                                
+                        </button> 
+                    </div>
+                    <div class="col-md-5">
+                        <form action="{{route('products.search')}}" method="GET">
+                            <div id="custom-search-input">
+                                <div class="input-group col-md-12">
+                                    @csrf
+                                    <input type="text" class="form-control input-md" placeholder="Search..." name="keyword" />
+                                    <span class="input-group-btn">
+                                    <button class="btn btn-info btn-md" type="submit">
+                                        <i class="glyphicon glyphicon-search"></i>
+                                    </button>
+                                    </span>                                                                
+                                </div>
+                            </div>
+                        <form> 
+                    </div>
+                </div>
+                <hr>
                 <table class="table table-striped table-bordered">
                     <thead>
                         <tr>
@@ -30,9 +49,29 @@
                         </tr>
                     </thead>
                    <tbody>
-                                           
+                        @foreach($products as $product)
+                            <tr>
+                                <td>{{ $product->id }}</td>
+                                <td><img src="{{asset('storage/'.$product->images[0]->url)}}" width="80px"></td>
+                                <td>{{ $product->name }}</td>
+                                <td>{{ $product->category->name }}</td>
+                                <td>{{ $product->price }}</td>
+                                <td>{{ $product->quantity }}</td>                              
+                                <td>
+                                    <a href="{{ route('products.edit',$product)}}">
+                                        <i class="fa fa-pencil fa-fw" style="color:black"></i>
+                                    </a>
+                                </td>
+                                <td class="center">
+                                    <a href="{{ route('products.destroy',$product)}}">
+                                        <i class="fa fa-trash-o  fa-fw" style="color:black"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        @endforeach                        
                     </tbody>      
                 </table>
+                {{ $products->links()}}
             </div>
         </div>    
    </div>
@@ -40,23 +79,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
 $(document).ready(function(){
-    fetch_product_data();
-    function fetch_product_data(query = ''){
-        $.ajax({
-            url:"{{ route('products.search') }}",
-            method:'GET',
-            data:{query:query},
-            dataType:'json',
-            success:function(data){
-                $('tbody').html(data.table_data);
-                $('#total_records').text(data.total_data);
-            }
-        })
-    }
-    $(document).on('keyup', '#search', function(){
-      var query = $(this).val();
-      fetch_product_data(query);
-     });
+ 
 });
 </script>
 @stop

@@ -48,7 +48,7 @@ Route::group(['prefix'=>'admin','middleware'=>'admin'],function () {
 		    Route::get('/search', 'ProductController@search')->name("products.search");
 		    Route::get('/create', 'ProductController@create')->name("products.create");
 		    Route::post('/create', 'ProductController@store')->name("products.store");
-		    Route::get('/show/{product}', 'ProductController@show')->name("products.show");
+		    Route::get('/edit/{product}', 'ProductController@edit')->name("products.edit");
 		    Route::put('/edit/{product}', 'ProductController@update')->name("products.update");
 		    Route::get('/delete/{product}','ProductController@destroy')->name("products.destroy");
 		});

@@ -4,10 +4,7 @@
    <div class="panel panel-default">
         <div class="panel-heading">List User</div>
         <div class="panel-body">
-            <div class="form-group">
-                <input type="text" name="search" id="search" class="form-control" placeholder="Search users..." />
-            </div>
-            <div>
+            <div>            
                 @if (session('success'))
                     <div class="alert" style="background:#dff0d8; color:#4f844f" role="alert">
                         {{ session('success') }}
@@ -15,7 +12,29 @@
                 @endif     
             </div>
             <div class="table-responsive">
-                <h3 align="center">Total: <span id="total_records"></span></h3>
+                <div class="col-md-12">
+                    <div class="col-md-7">
+                        <button class="btn btn-info btn-md" type="button">
+                            <a href="{{route('users.list')}}" style="color:white; font-weight: bold;">LIST ALL</a>                                
+                        </button> 
+                    </div>
+                    <div class="col-md-5">
+                        <form action="{{route('users.search')}}" method="GET">
+                            <div id="custom-search-input">
+                                <div class="input-group col-md-12">
+                                    @csrf
+                                    <input type="text" class="form-control input-md" placeholder="Search..." name="keyword" />
+                                    <span class="input-group-btn">
+                                    <button class="btn btn-info btn-md" type="submit">
+                                        <i class="glyphicon glyphicon-search"></i>
+                                    </button>
+                                    </span>                                                                
+                                </div>
+                            </div>
+                        <form> 
+                    </div>
+                </div>
+                <hr>
                 <table class="table table-striped table-bordered">
                     <thead>
                         <tr>
@@ -29,10 +48,44 @@
                                 <th>Edit</th>
                         </tr>
                     </thead>
-                   <tbody>
-                                           
-                    </tbody>      
+                    <tbody>
+                        @foreach($users as $user)
+                            <tr>
+                                <td>{{ $user->id }}</td>
+                                <td>{{ $user->name }}</td>
+                                <td>{{ $user->tel }}</td>
+                                <td>{{ $user->email }}</td>
+                                <td>
+                                    @if($user->user_type == App\User::ADMIN_TYPE)
+                                        {{ 'Admin' }}
+                                    @else
+                                        {{ 'Customer' }}
+                                    @endif
+                                </td>
+                                <td>
+                                    @if($user->active == 1)
+                                        <span class="fa fa-check-square-o fa-fw" 
+                                                style="color:green"></span>
+                                    @else
+                                        <span class="fa  fa-minus-square-o  fa-fw" 
+                                                style="color:red"></span>
+                                    @endif
+                                </td>
+                                <td class="center">
+                                    <a href="{{ route('users.destroy',$user)}}">
+                                        <i class="fa fa-trash-o  fa-fw" style="color:black"></i>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="{{ route('users.edit',$user)}}">
+                                        <i class="fa fa-pencil fa-fw" style="color:black"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        @endforeach  
+                    </tbody>
                 </table>
+                {{ $users->links() }}
             </div>
         </div>    
    </div>
@@ -40,23 +93,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
 $(document).ready(function(){
-    fetch_user_data();
-    function fetch_user_data(query = ''){
-        $.ajax({
-            url:"{{ route('users.search') }}",
-            method:'GET',
-            data:{query:query},
-            dataType:'json',
-            success:function(data){
-                $('tbody').html(data.table_data);
-                $('#total_records').text(data.total_data);
-            }
-        })
-    }
-    $(document).on('keyup', '#search', function(){
-      var query = $(this).val();
-      fetch_user_data(query);
-     });
+  
 });
 </script>
 @stop
