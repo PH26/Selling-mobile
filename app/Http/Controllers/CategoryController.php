@@ -14,7 +14,7 @@ class CategoryController extends Controller
      */
     public function list()
     {
-        $categories = Category::paginate(10);
+        $categories = Category::all();
         return view('admin.categories.index')->with('categories', $categories);
     }
 
@@ -87,7 +87,7 @@ class CategoryController extends Controller
             else{
                 $output =   '
                                 <tr>
-                                    <td align="center" colspan="5">No Data Found</td>
+                                    <td align="center" colspan="4">No Data Found</td>
                                 </tr>
                             ';
             }

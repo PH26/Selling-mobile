@@ -36,11 +36,6 @@
                             
                             <button type="submit" class="btn btn-primary">Add</button>
                             <button type="reset" class="btn btn-primary">Reset</button>
-                            <hr>
-
-                            <div class="form-group">
-                                <a style="font-size: 18px;" href="{{route('categories.list')}}">Back to list</a>
-                            </div> 
                         <form>
                     </div>
                 </div>

@@ -15,7 +15,7 @@ class UserController extends Controller
      */
     public function list()
     {
-        $users = User::paginate(10);
+        $users = User::all();
         return view('admin.users.index')->with('users', $users);
     }
 
@@ -111,7 +111,7 @@ class UserController extends Controller
             else{
                 $output =   '
                                 <tr>
-                                    <td align="center" colspan="5">No Data Found</td>
+                                    <td align="center" colspan="8">No Data Found</td>
                                 </tr>
                             ';
             }
@@ -165,5 +165,14 @@ class UserController extends Controller
     {
         $user->delete();
         return redirect()->route('users.list')->with('success', 'Delete a user successfully');
+    }
+
+    public function login(Request $request)
+    {   
+        if (Auth::attempt(['email'=>$request->email,'password'=>$request->password,'user_type'=>0])) {
+            return redirect()->route('home');          
+        }else{
+            return redirect()->route('login')->with('error', 'Incorrect information!!!');
+        }
     }
 }

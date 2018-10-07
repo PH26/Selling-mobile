@@ -29,7 +29,6 @@
                                            
                     </tbody>      
                 </table>
-                {{ $categories->links() }}
             </div>
         </div>    
    </div>
@@ -53,7 +52,7 @@ $(document).ready(function(){
     $(document).on('keyup', '#search', function(){
       var query = $(this).val();
       fetch_category_data(query);
-     });
+    });
 });
 </script>
 @stop

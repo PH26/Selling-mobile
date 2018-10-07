@@ -71,28 +71,26 @@
             </div>
         </div>
     </div>
+    
     <div class="panel">
-
-    <div class="panel-heading" id="heading">
-        <div class="col-md-12 category">NEW</div>
-    </div>
-    <div class="panel-body">
-        @foreach($newproduct as $product)
-            <div class="col-md-3">
-                <div class="thumbnail">
-                    <a href="{{route('product',$product)}}"><img src="{{asset('storage/'.$product->images[0]->url)}}"></a>
-                    <div class="caption">
-                        <p><a href="{{route('product',$product)}}">{{ $product->name }}</a></p>
-                        <p><b>{{ number_format($product->price,0, '', '.')}}₫</b></p>
-                        <button class="btn btn-success">
-                            <span class="fa fa-shopping-cart fa-1x"> Add to cart</span> 
-                        </button>
+        <div class="panel-heading" id="heading">
+            <div class="col-md-12 category">NEW</div>
+        </div>
+        <div class="panel-body">
+            @foreach($newproduct as $product)
+                <div class="col-md-3">
+                    <div class="thumbnail">
+                        <a href="{{route('product',$product)}}"><img src="{{asset('storage/'.$product->images[0]->url)}}"></a>
+                        <div class="caption">
+                            <p><a href="{{route('product',$product)}}">{{ $product->name }}</a></p>
+                            <p><b>{{ number_format($product->price,0, '', '.')}}₫</b></p>
+                            <button class="btn btn-success">
+                                <span class="fa fa-shopping-cart fa-1x"> Add to cart</span> 
+                            </button>
+                        </div>
                     </div>
                 </div>
-            </div>
-        @endforeach
-        <div class="col-md-12">
+            @endforeach
         </div>
-    </div>
-</div>              
+    </div>              
 @endsection 

@@ -14,7 +14,7 @@ class ProductController extends Controller
 
     public function list()
     {
-        $products = Product::paginate(10);
+        $products = Product::all();
         return view('admin.products.index')->with('products', $products);
     }
 
@@ -73,8 +73,8 @@ class ProductController extends Controller
                                     <td>'.$product->id.'</td>
                                     <td><img src="'.$img.'" width="80px"></td>
                                     <td>'.$product->name.'</td>
-                                    <td>'.$product->price.'</td>
                                     <td>'.$product->category->name.'</td>
+                                    <td>'.$product->price.'</td>                                  
                                     <td>'.$product->quantity.'</td>
                                     <td>
                                         <i class="fa fa-pencil fa-fw"></i>
@@ -90,7 +90,7 @@ class ProductController extends Controller
             else{
                 $output =   '
                                 <tr>
-                                    <td align="center" colspan="5">No Data Found</td>
+                                    <td align="center" colspan="8">No Data Found</td>
                                 </tr>
                             ';
             }
