@@ -14,8 +14,8 @@ class CategoryController extends Controller
      */
     public function list()
     {
-        $categories = Category::all();
-        return view('admin.categories.index')->with('categories', $categories);
+        $categories = Category::orderBy('id', 'desc')->paginate(10);
+        return view('admin.categories.index',compact('categories'));
     }
 
     /**
@@ -52,51 +52,16 @@ class CategoryController extends Controller
      */
     public function search(Request $request)
     {
-        if($request->ajax()){
-            $output = '';
-            $query = $request->get('query');
-            if($query != ''){
-                $data = Category::where('id', 'like', '%'.$query.'%')
-                        ->orWhere('name', 'like', '%'.$query.'%')
-                        ->orderBy('id', 'desc')->get();
+        $key = $request->get('keyword');
+            if($key != ''){
+                $categories = Category::where('id', 'like', '%'.$key.'%')
+                        ->orWhere('name', 'like', '%'.$key.'%')
+                        ->orderBy('id', 'desc')->paginate(10);
             }
             else{
-                $data = Category::orderBy('id', 'desc')->get();
+                $categories = Category::orderBy('id', 'desc')->paginate(10);
             }
-            $total_row = $data->count();
-            if($total_row > 0){
-                foreach($data as $row){
-                    $category = Category::find($row->id);
-                    $delete='categories/delete/'.$category->id;
-                    $edit='categories/edit/'.$category->id;
-                    $output .= '
-                                <tr>
-                                    <td>'.$category->id.'</td>
-                                    <td>'.$category->name.'</td>
-                                    <td>
-                                        <i class="fa fa-trash-o  fa-fw"></i>
-                                        <a href="'.$delete.'">Delete</a>
-                                    </td>
-                                    <td>
-                                        <i class="fa fa-pencil fa-fw"></i>
-                                        <a href="'.$edit.'">Edit</a>
-                                    </td>
-                                </tr>';
-                }
-            }
-            else{
-                $output =   '
-                                <tr>
-                                    <td align="center" colspan="4">No Data Found</td>
-                                </tr>
-                            ';
-            }
-            $data = array(
-                            'table_data'  => $output,
-                            'total_data'  => $total_row
-                        );
-            echo json_encode($data);
-        }
+        return view('admin.categories.index',compact('categories'));
     }
 
     /**
@@ -107,7 +72,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        return view('admin.categories.edit')->with('category', $category);
+        return view('admin.categories.edit',compact('category'));
     }
 
     /**

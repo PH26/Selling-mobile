@@ -14,8 +14,8 @@ class ProductController extends Controller
 
     public function list()
     {
-        $products = Product::all();
-        return view('admin.products.index')->with('products', $products);
+        $products = Product::orderBy('id', 'desc')->paginate(10);
+        return view('admin.products.index',compact('products'));
     }
 
     public function create()
@@ -49,60 +49,21 @@ class ProductController extends Controller
 
     public function search(Request $request)
     {
-        if($request->ajax()){
-            $output = '';
-            $query = $request->get('query');
-            if($query != ''){
-                $data = Product::where('id', 'like', '%'.$query.'%')
-                        ->orWhere('name', 'like', '%'.$query.'%')
-                        ->orWhere('price', 'like', '%'.$query.'%')
-                        ->orderBy('id', 'desc')->get();
+        $key = $request->get('keyword');
+            if($key != ''){
+                $products = Product::where('id', 'like', '%'.$key.'%')
+                        ->orWhere('name', 'like', '%'.$key.'%')
+                        ->orWhere('price', 'like', '%'.$key.'%')
+                        ->orWhere('quantity', 'like', '%'.$key.'%')
+                        ->orderBy('id', 'desc')->paginate(15);
             }
             else{
-                $data = Product::orderBy('id', 'desc')->get();
+                $products = Product::orderBy('id', 'desc')->paginate(10);
             }
-            $total_row = $data->count();
-            if($total_row > 0){
-                foreach($data as $row){
-                    $product = Product::find($row->id);
-                    $img=asset('storage/'.$product->images[0]->url);
-                    $delete='products/delete/'.$product->id;
-                    $show='products/show/'.$product->id;
-                    $output .= '
-                                <tr>
-                                    <td>'.$product->id.'</td>
-                                    <td><img src="'.$img.'" width="80px"></td>
-                                    <td>'.$product->name.'</td>
-                                    <td>'.$product->category->name.'</td>
-                                    <td>'.$product->price.'</td>                                  
-                                    <td>'.$product->quantity.'</td>
-                                    <td>
-                                        <i class="fa fa-pencil fa-fw"></i>
-                                         <a href="'.$show.'">View</a>
-                                    </td>
-                                    <td>
-                                        <i class="fa fa-trash-o  fa-fw"></i>
-                                        <a href="'.$delete.'">Delete</a>
-                                    </td>                                   
-                                </tr>';
-                }
-            }
-            else{
-                $output =   '
-                                <tr>
-                                    <td align="center" colspan="8">No Data Found</td>
-                                </tr>
-                            ';
-            }
-            $data = array(
-                            'table_data'  => $output,
-                            'total_data'  => $total_row
-                        );
-            echo json_encode($data);
-        }
+        return view('admin.products.index',compact('products'));
     }
 
-    public function show(Product $product)
+    public function edit(Product $product)
     {
         $categories= Category::all();
         return view('admin.products.show',compact('product', 'categories'));
