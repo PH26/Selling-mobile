@@ -144,27 +144,29 @@
 			</div>
 	    </div>
 	</div>
-	<div class="panel">
-    	<div class="panel-heading">COMPARE WITH SIMILAR PRODUCTS</div>
-	    <div class="panel-body">
-	        @foreach($sameproduct as $item)
-                <div class="col-md-3">
-                    <div class="thumbnail">
-                        <a href="{{route('product',$item)}}"><img src="{{asset('storage/'.$item->images[0]->url)}}"></a>
-                        <div class="caption">
-                            <p><a href="{{route('product',$item)}}">{{ $item->name }}</a></p>
-                            <p><b style="color: red;">{{ number_format($item->price,0, '', '.')}}₫</b></p>
-                            <button class="btn btn-success" style="margin-bottom: 1em;">
-                                <span class="fa fa-shopping-cart fa-1x"> Add to cart</span> 
-                            </button>
-                            <a href="{{route('compare',[$product, $item]) }}" style="border:none; color:blue; font-weight:normal; margin:2em;">
-                            	Detailed comparison
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            @endforeach
-	    </div>
-	</div>              
+	@if(count($sameproduct)>0)
+		<div class="panel">
+	    	<div class="panel-heading">COMPARE WITH SIMILAR PRODUCTS</div>
+		    <div class="panel-body">
+		        @foreach($sameproduct as $item)
+	                <div class="col-md-3">
+	                    <div class="thumbnail">
+	                        <a href="{{route('product',$item)}}"><img src="{{asset('storage/'.$item->images[0]->url)}}"></a>
+	                        <div class="caption">
+	                            <p><a href="{{route('product',$item)}}">{{ $item->name }}</a></p>
+	                            <p><b style="color: red;">{{ number_format($item->price,0, '', '.')}}₫</b></p>
+	                            <button class="btn btn-success" style="margin-bottom: 1em;">
+	                                <span class="fa fa-shopping-cart fa-1x"> Add to cart</span> 
+	                            </button>
+	                            <a href="{{route('compare',[$product, $item]) }}" style="border:none; color:blue; font-weight:normal; margin:2em;">
+	                            	Detailed comparison
+	                            </a>
+	                        </div>
+	                    </div>
+	                </div>
+	            @endforeach
+		    </div>
+		</div>       
+	@endif       
 </div>
 @endsection 

@@ -28,7 +28,9 @@
 			<ul class="nav nav-pills nav-stacked">
 					<li role="presentation"><a href="{{route('index')}}">ALL</a></li>
 				@foreach($categories as $category)
-					<li role="presentation"><a href="{{route('category',$category->id)}}">{{ strtoupper($category->name) }}</a></li>
+					@if(count($category->products)>0)
+						<li role="presentation"><a href="{{route('category',$category->id)}}">{{ strtoupper($category->name) }}</a></li>
+					@endif					
 				@endforeach
 			</ul>
 	  	</div>
