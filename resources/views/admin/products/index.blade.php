@@ -63,9 +63,9 @@
                                     </a>
                                 </td>
                                 <td class="center">
-                                    <a href="{{ route('products.destroy',$product)}}">
+                                    <button type="button" value="{{$product->id}}" class="btn btn-danger">
                                         <i class="fa fa-trash-o  fa-fw" style="color:black"></i>
-                                    </a>
+                                    </button>                                  
                                 </td>
                             </tr>
                         @endforeach                        
@@ -79,7 +79,14 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
 $(document).ready(function(){
- 
+    var button = $('.btn-danger');
+    button.click(function(){
+        if (confirm("Do you want to delete?")) {
+            var url = '{{ route("products.destroy", ":id") }}';
+            url = url.replace(':id', $(this).val());
+            window.location.href=url;
+        }
+    });
 });
 </script>
 @stop

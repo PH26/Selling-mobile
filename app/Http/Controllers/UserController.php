@@ -111,8 +111,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy($id)
     {
+        $user=User::find($id);
         $user->delete();
         return redirect()->route('users.list')->with('success', 'Delete a user successfully');
     }
