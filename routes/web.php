@@ -3,10 +3,11 @@
 //Begin route of Pages
 Route::get('/','PageController@index')->name('index');
 Route::get('/category/{id}','PageController@category')->name('category');
-Route::get('/product/{product}','PageController@product')->name('product'); 
- 
-Auth::routes();
+Route::get('/product/{product}','PageController@product')->name('product');
+Route::get('/compare/{product}/{product2}','PageController@compare')->name('compare'); 
 
+Auth::routes();
+Route::post('/login','UserController@login')->name("users.login");
 Route::get('/home', 'HomeController@index')->name('home');
 
 // End route of Pages
