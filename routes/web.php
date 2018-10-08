@@ -7,6 +7,7 @@ Route::get('/product/{product}','PageController@product')->name('product');
 Route::get('/compare/{product}/{product2}','PageController@compare')->name('compare'); 
 
 Auth::routes();
+Route::get('/user/activation/{token}', 'Auth\RegisterController@userActivation');
 Route::post('/login','UserController@login')->name("users.login");
 Route::get('/home', 'HomeController@index')->name('home');
 
