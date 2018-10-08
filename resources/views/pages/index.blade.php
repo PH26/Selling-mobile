@@ -9,10 +9,10 @@
             font-size: 100%;
         }
         .thumbnail{
-            height: 21em;
+            height: 18em;
         }
         .thumbnail img{
-            width: 70%;
+            width: 50%;
             object-fit: cover;
         }
         b{
@@ -40,6 +40,9 @@
         .pagination{
             display: inline-flex;
             width: 50%;
+        }
+        .btn-success{
+            border-radius: 50px;
         }
     </style>
     <div class="panel">
