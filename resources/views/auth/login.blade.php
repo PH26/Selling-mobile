@@ -11,6 +11,20 @@
                 @if (session('error'))
                     <p style="color: red; text-align: center;">{{ session('error') }}</p>
                 @endif
+                @if ($message = Session::get('success'))
+                  <div class="alert alert-success">
+                    <p>
+                      {{ $message }}
+                    </p>
+                  </div>
+                @endif
+                @if ($message = Session::get('warning'))
+                  <div class="alert alert-warning">
+                    <p>
+                      {{ $message }}
+                    </p>
+                  </div>
+                @endif
                 <div class="card-body">
                     <form method="POST" action="{{ route('users.login') }}">
                         @csrf
