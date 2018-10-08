@@ -5,7 +5,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">Product
-                            <small>Edit</small>
+                            <small>Details</small>
                         </h1>
                     </div>
                     <div class="col-lg-12">

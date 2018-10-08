@@ -11,34 +11,19 @@ use Illuminate\Http\File;
 
 class ProductController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function list()
     {
-        $products = Product::paginate(10);
-        return view('admin.products.index')->with('products', $products);
+        $products = Product::orderBy('id', 'desc')->paginate(10);
+        return view('admin.products.index',compact('products'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         $categories= Category::all();
         return view('admin.products.create')->with('categories', $categories);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $this->validate($request,[
@@ -62,36 +47,28 @@ class ProductController extends Controller
         return redirect()->route('products.create')->with('success', 'Create a new product successfully');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Product  $product
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Product $product)
+    public function search(Request $request)
     {
-        //
+        $key = $request->get('keyword');
+            if($key != ''){
+                $products = Product::where('id', 'like', '%'.$key.'%')
+                        ->orWhere('name', 'like', '%'.$key.'%')
+                        ->orWhere('price', 'like', '%'.$key.'%')
+                        ->orWhere('quantity', 'like', '%'.$key.'%')
+                        ->orderBy('id', 'desc')->paginate(15);
+            }
+            else{
+                $products = Product::orderBy('id', 'desc')->paginate(10);
+            }
+        return view('admin.products.index',compact('products'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Product  $product
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Product $product)
     {
         $categories= Category::all();
-        return view('admin.products.edit',compact('product', 'categories'));
+        return view('admin.products.show',compact('product', 'categories'));
     }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Product  $product
-     * @return \Illuminate\Http\Response
-     */
+    
     public function update(Request $request, Product $product)
     {
         $this->validate($request,[
@@ -105,14 +82,10 @@ class ProductController extends Controller
         return redirect()->route('products.list')->with('success', 'Edit a product successfully');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Product  $product
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Product $product)
+    
+    public function destroy($id)
     {
+        $product = Product::find($id);
         $product->delete();
         return redirect()->route('products.list')->with('success', 'Delete a new product successfully');
     }

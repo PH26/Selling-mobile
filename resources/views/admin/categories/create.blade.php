@@ -31,16 +31,11 @@
                             <div class="form-group">
                                 <label>Name</label>
                                 <input class="form-control" required=""  name="name" 
-                                    placeholder="Please enter category name" />
+                                    placeholder="Please enter category name" value="{{ old('name') }}"/>
                             </div>
                             
                             <button type="submit" class="btn btn-primary">Add</button>
                             <button type="reset" class="btn btn-primary">Reset</button>
-                            <hr>
-
-                            <div class="form-group">
-                                <a style="font-size: 18px;" href="{{route('categories.list')}}">Back to list</a>
-                            </div> 
                         <form>
                     </div>
                 </div>

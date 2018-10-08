@@ -3,82 +3,42 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Category;
+use App\Product;
 
 class PageController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
+    public function __construct(){
+        $categories = Category::all();
+        $newproduct = Product::orderBy('id', 'desc')->take(4)->get();
+        view()->share('categories',$categories);
+        view()->share('newproduct',$newproduct);
+    }
+    
     public function index()
     {
-        //
+        $products = Product::paginate(8);;  
+        return view('pages.index',compact('products'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function category($id)
     {
-        //
+        $products = Product::where('category_id',$id)->paginate(8);
+        $category = Category::find($id);
+        return view('pages.index', compact('products','category'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function product(Product $product)
     {
-        //
+        $sameproduct = Product::where('price',$product->price)->where('id','<>',$product->id)->take(4)->get();
+        return view('pages.product', compact('product','sameproduct'));
+
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function compare(Product $product , Product $product2)
     {
-        //
-    }
+        return view('pages.compare', compact('product','product2'));
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }

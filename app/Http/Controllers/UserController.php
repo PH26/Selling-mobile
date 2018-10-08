@@ -15,8 +15,8 @@ class UserController extends Controller
      */
     public function list()
     {
-        $users = User::paginate(10);
-        return view('admin.users.index')->with('users', $users);
+        $users = User::orderBy('id', 'desc')->paginate(10);
+        return view('admin.users.index',compact('users'));
     }
 
     /**
@@ -57,9 +57,20 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function search(Request $request)
     {
-        //
+        $key = $request->get('keyword');
+            if($key != ''){
+                $users = User::where('id', 'like', '%'.$key.'%')
+                        ->orWhere('name', 'like', '%'.$key.'%')
+                        ->orWhere('tel', 'like', '%'.$key.'%')
+                        ->orWhere('email', 'like', '%'.$key.'%')
+                        ->orderBy('id', 'desc')->paginate(20);
+            }
+            else{
+                $users = User::orderBy('id', 'desc')->paginate(10);
+            }
+        return view('admin.users.index',compact('users'));
     }
 
     /**
@@ -70,7 +81,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return view('admin.users.edit')->with('user', $user);
+        return view('admin.users.edit',compact('user'));
     }
 
     /**
@@ -100,9 +111,19 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy($id)
     {
+        $user=User::find($id);
         $user->delete();
         return redirect()->route('users.list')->with('success', 'Delete a user successfully');
+    }
+
+    public function login(Request $request)
+    {   
+        if (Auth::attempt(['email'=>$request->email,'password'=>$request->password,'user_type'=>0,'active'=>1])) {
+            return redirect()->route('home');          
+        }else{
+            return redirect()->route('login')->with('error', 'Incorrect information!!!');
+        }
     }
 }

@@ -14,8 +14,8 @@ class CategoryController extends Controller
      */
     public function list()
     {
-        $categories = Category::paginate(10);
-        return view('admin.categories.index')->with('categories', $categories);
+        $categories = Category::orderBy('id', 'desc')->paginate(10);
+        return view('admin.categories.index',compact('categories'));
     }
 
     /**
@@ -50,9 +50,18 @@ class CategoryController extends Controller
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function search(Request $request)
     {
-      
+        $key = $request->get('keyword');
+            if($key != ''){
+                $categories = Category::where('id', 'like', '%'.$key.'%')
+                        ->orWhere('name', 'like', '%'.$key.'%')
+                        ->orderBy('id', 'desc')->paginate(10);
+            }
+            else{
+                $categories = Category::orderBy('id', 'desc')->paginate(10);
+            }
+        return view('admin.categories.index',compact('categories'));
     }
 
     /**
@@ -63,7 +72,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        return view('admin.categories.edit')->with('category', $category);
+        return view('admin.categories.edit',compact('category'));
     }
 
     /**
@@ -89,9 +98,15 @@ class CategoryController extends Controller
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
-    {
-        $category->delete();
-        return redirect()->route('categories.list')->with('success', 'Delete a new category successfully');
+    public function destroy($id)
+    {   
+        $category = Category::find($id);
+        $size = count($category->products);
+        if ($size == 0) {
+            $category->delete();
+            return redirect()->route('categories.list')->with('success', 'Delete a new category successfully');
+        }
+        return redirect()->route('categories.list')->with('error', 'Cannot delete!');
+        
     }
 }
