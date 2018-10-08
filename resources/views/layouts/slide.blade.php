@@ -3,7 +3,7 @@
 		margin-top: 5em; 
 	}
 	.carousel-inner{
-		height: 25em;
+		height: 24em;
 		width: 94%;
 		object-fit: cover;
 	}

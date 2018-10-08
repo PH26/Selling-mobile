@@ -40,10 +40,10 @@
 		color: white;
 	}
 	.thumbnail{
-        height: 23em;
+        height: 20em;
     }
     .thumbnail img{
-        width: 70%;
+        width: 50%;
         object-fit: cover;
     }
     .thumbnail:hover{
@@ -60,6 +60,9 @@
     .col-md-4{
     	font-weight: bold;
     }
+    .btn-success{
+            border-radius: 50px;
+        }
 </style>
    
 <div class="col-md-12">
