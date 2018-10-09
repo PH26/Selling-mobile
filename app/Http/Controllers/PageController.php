@@ -11,27 +11,27 @@ class PageController extends Controller
 
     public function __construct(){
         $categories = Category::all();
-        $newproduct = Product::orderBy('id', 'desc')->take(4)->get();
+        $newproduct = Product::orderBy('id', 'desc')->take(6)->get();
         view()->share('categories',$categories);
         view()->share('newproduct',$newproduct);
     }
     
     public function index()
     {
-        $products = Product::paginate(8);;  
+        $products = Product::paginate(12);;  
         return view('pages.index',compact('products'));
     }
 
     public function category($id)
     {
-        $products = Product::where('category_id',$id)->paginate(8);
+        $products = Product::where('category_id',$id)->paginate(12);
         $category = Category::find($id);
         return view('pages.index', compact('products','category'));
     }
 
     public function product(Product $product)
     {
-        $sameproduct = Product::where('price',$product->price)->where('id','<>',$product->id)->take(4)->get();
+        $sameproduct = Product::where('price',$product->price)->where('id','<>',$product->id)->take(3)->get();
         return view('pages.product', compact('product','sameproduct'));
 
     }
