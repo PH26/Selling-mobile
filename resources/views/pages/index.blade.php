@@ -1,99 +1,106 @@
 @extends('layouts.master')
 @section('content')
-    <style>
-        #heading{
-            height: 3em;
-        }
-        .category{
-            font-weight: bold;
-            font-size: 100%;
-        }
-        .thumbnail{
-            height: 18em;
-        }
-        .thumbnail img{
-            width: 50%;
-            object-fit: cover;
-        }
-        b{
-            color: red;
-        }
-        .caption a{
-            text-decoration: none;
-            color: black;
-        }
-        .caption a:hover{
-            text-decoration: none;
-            color: #288ad6;
-        }
-        .thumbnail:hover{
-            border: 2px solid #00e68a;         
-        }
-        .thumbnail:hover img{
-            -webkit-transform: scale(1.04);
-            -moz-transform: scale(1.04);
-            -ms-transform: scale(1.04);
-            transform: scale(1.04);
-            -webkit-transition: transform 0.5s; 
-            transition: transform 0.5s; 
-        }
-        .pagination{
-            display: inline-flex;
-            width: 50%;
-        }
-        .btn-success{
-            border-radius: 50px;
-        }
-    </style>
-    <div class="panel">
+<style>
+    .index{      
+        margin:0 auto;
+    }
+    .index .title{
+        font-weight: bold;
+        font-size: 130%;
+        border-bottom: 1px solid #f2eded;
+        padding:0.4em 0;
+        margin-left: 1em;
+    }
+    .index .card{
+        width: 31%;
+        border:1px solid #f2eded;
+        height: 9em;
+        padding: 1em;
+        margin: 1em;
 
-        <div class="panel-heading" id="heading">
-            @if(isset($category))
-                <div class="col-md-12 category">{{ strtoupper($category->name)}}</div>
-            @else
-               <div class="col-md-12 category">ALL</div>
-            @endif
-        </div>
-        <div class="panel-body">
-            @foreach($products as $product)
-                <div class="col-md-3">
-                    <div class="thumbnail">
-                        <a href="{{route('product',$product)}}"><img src="{{asset('storage/'.$product->images[0]->url)}}"></a>
-                        <div class="caption">
-                            <p><a href="{{route('product',$product)}}">{{ $product->name }}</a></p>
-                            <p><b>{{ number_format($product->price,0, '', '.')}}₫</b></p>
-                            <button class="btn btn-success">
-                                <span class="fa fa-shopping-cart fa-1x"> Add to cart</span> 
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            @endforeach
-            <div class="col-md-12">
-                {{ $products->links() }}
-            </div>
-        </div>
+    }
+    .index .card:hover{
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        transition: box-shadow 0.5s; 
+    }
+    .index .card:hover img{
+        opacity: 0.8;
+    }
+    .index .card .rating{
+        color: yellow; 
+        font-size: 1.5em; 
+        font-weight: bold;
+    }
+    .index .card .name{
+        font-weight: bold;
+        font-size: 125%;
+        font-family: 'inherit', serif; 
+    }
+    .index .card .price{
+        font-size: 120%;
+        color: #a0c864;
+        font-weight: bold;
+        font-family: 'inherit', serif; 
+    }
+    .index .card .cart-plus{
+        color: #a0c864;
+        cursor: pointer;
+    }
+    .index .card a{
+        color: black;
+    }
+    .index .card a:hover {
+        color: #2196F3;
+        text-decoration: none;
+    }
+</style>
+@include('layouts.slide')
+<div class="col-md-12 index">
+    <div class="col-md-12 title">
+        @if(isset($category))
+            {{ strtoupper($category->name)}}           
+        @else
+            Điện thoại nổi bật nhất
+        @endif   
     </div>
-    
-    <div class="panel">
-        <div class="panel-heading" id="heading">
-            <div class="col-md-12 category">NEW</div>
+    @foreach($products as $product)
+        <div class="col-md-4 card">
+            <a href="{{route('product',$product)}}">
+                <img class="col-md-4 image" src="{{asset('storage/'.$product->images[1]->url)}}">
+            </a>
+            <div class="col-md-7">
+                <p class="rating">* * * * *</p>
+                <a href="{{route('product',$product)}}">
+                    <p class="name">{{$product->name}}</p>
+                </a>
+                <p class="price">{{ number_format($product->price,0, '', '.')}}₫</p>
+            </div>
+            <div class="col-md-1">
+                <i class="fa fa-heart cart-plus"></i>              
+            </div>            
         </div>
-        <div class="panel-body">
-            @foreach($newproduct as $product)
-                <div class="col-md-3">
-                    <div class="thumbnail">
-                        <a href="{{route('product',$product)}}"><img src="{{asset('storage/'.$product->images[0]->url)}}"></a>
-                        <div class="caption">
-                            <p><a href="{{route('product',$product)}}">{{ $product->name }}</a></p>
-                            <p><b>{{ number_format($product->price,0, '', '.')}}₫</b></p>
-                            <button class="btn btn-success">
-                                <span class="fa fa-shopping-cart fa-1x"> Add to cart</span> 
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            @endforeach
+    @endforeach  
+</div>
+
+<div class="col-md-12 index" style="margin-top: 2em;">
+    <div class="col-md-12 title">
+        Điện thoại mới nhất
+    </div>
+    @foreach($newproduct as $product)
+        <div class="col-md-4 card">
+            <a href="{{route('product',$product)}}">
+                <img class="col-md-4 image" src="{{asset('storage/'.$product->images[1]->url)}}">
+            </a>
+            <div class="col-md-7">
+                <p class="rating">* * * * *</p>
+                <a href="{{route('product',$product)}}">
+                    <p class="name">{{$product->name}}</p>
+                </a>
+                <p class="price">{{ number_format($product->price,0, '', '.')}}₫</p>
+            </div>
+            <div class="col-md-1">
+                <i class="fa fa-heart cart-plus"></i>              
+            </div>            
         </div>
-    </div>              
-@endsection 
+    @endforeach  
+</div>

@@ -1,71 +1,117 @@
 @extends('layouts.master')
 @section('content')
 <style>
-	
-	.product-name{
+	.index{      
+        margin:0 auto;
+    }
+    .index .title{
+        font-weight: bold;
+        font-size: 130%;
+        border-bottom: 1px solid #f2eded;
+        padding:0.4em 0;
+        margin-left: 1em;
+    }
+    .index .card{
+        width: 31%;
+        border:1px solid #f2eded;
+        height: 11em;
+        padding: 1em;
+        margin: 1em;
+
+    }
+    .index .card:hover{
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        transition: box-shadow 0.5s; 
+    }
+    .index .card:hover img{
+        opacity: 0.8;
+    }
+    .index .card .rating{
+        color: yellow; 
+        font-size: 1.5em; 
+        font-weight: bold;
+    }
+    .index .card .name{
+        font-weight: bold;
+        font-size: 125%;
+        font-family: 'inherit', serif; 
+    }
+    .index .card .price{
+        font-size: 120%;
+        color: #a0c864;
+        font-weight: bold;
+        font-family: 'inherit', serif; 
+    }
+    .index .card .cart-plus{
+        color: #a0c864;
+        cursor: pointer;
+    }
+    .index .card a{
+        color: black;
+    }
+    .index .card a:hover {
+        color: #2196F3;
+        text-decoration: none;
+    }
+	.fa-search{
+		padding-bottom: 0.2em;
+	}
+	.panel *{
+		font-family: 'inherit', serif;
+	}
+	.panel-heading{
 		font-weight: bold;
+		font-size: 150%;
+		border-bottom: 2px solid #f2eded;
 	}
 	.product-price{
 		color: red;
 		font-weight: bold;
-		font-size: 200%;
+		font-size: 160%;
 	}
 	.properties{
 		border-top:1px solid #d1e0e0; 
 		border-bottom:1px solid #d1e0e0;
 		font-size: 90%;
 		padding: 0.5em 0;
+		font-size: 110%;
 	}
 	.super{
 		height: 30em;
 	}
 	.super .item{
-		width: 60%;
+		width: 70%;
 		object-fit: cover;
 	}
-	.buy-now{
-		margin-top: 0.5em;
-		border-radius: 0.3em;
+	.buy{
 		background: #ff751a;
 		text-align: center;
 		color:white;
+		padding: 0.5em;
+		margin-bottom: 0.5em;
 	}
-	.buy-now:visited p{
+	.buy:hover{
+		text-decoration: none;
+		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 		color: white;
 	}
-	.buy-now:hover p{
-		color: white;	
+	.add-cart{
+		background: #63ac34;
+		text-align: center;
+		color:white;
+		padding: 0.5em;
+		margin-bottom: 0.5em;
+		cursor: pointer;
 	}
-	.buy-now:active p{
+	.add-cart:hover{
+		text-decoration: none;
+		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 		color: white;
 	}
-	.thumbnail{
-        height: 20em;
-    }
-    .thumbnail img{
-        width: 50%;
-        object-fit: cover;
-    }
-    .thumbnail:hover{
-        border: 2px solid #00e68a;         
-    }
-    .thumbnail:hover img{
-        -webkit-transform: scale(1.04);
-        -moz-transform: scale(1.04);
-        -ms-transform: scale(1.04);
-        transform: scale(1.04);
-        -webkit-transition: transform 0.5s; 
-        transition: transform 0.5s; 
-    }
-    .col-md-4{
-    	font-weight: bold;
-    }
-    .btn-success{
-            border-radius: 50px;
-        }
+	
 </style>
    
-<div class="col-md-12">
+<div class="col-md-12" style="margin-top: 7em">
 	<div class="panel">
     	<div class="panel-heading">{{ strtoupper($product->name) }}</div>
 	    <div class="panel-body">
@@ -92,11 +138,14 @@
 
 			<div class="col-md-6">
 				<div class="row">
-					<div class="col-md-8 product-price">{{ number_format($product->price,0, '', '.')}}₫</div>
-					<div class="col-md-4">
-						<button class="btn btn-success">
-                            <span class="fa fa-shopping-cart fa-1x"> Add to cart</span> 
-                        </button>
+					<div class="col-md-4 product-price">{{ number_format($product->price,0, '', '.')}}₫</div>
+					<div class="col-md-8">
+						<div class="col-md-8">
+							<p class="col-md-12 add-cart">Thêm vào giỏ hàng</p>
+						</div>
+						<div class="col-md-4">
+							<a class="col-md-12 buy" href="#">Mua Ngay</a>
+						</div>                        
 					</div>
 				</div>	
 		      	
@@ -140,36 +189,36 @@
 		      		<div class="col-md-4">Warranty:</div>
 		      		<div class="col-md-8">{{$product->warranty}} months</div>
 		      	</div>
-		      	<a class="col-md-12 buy-now" href="#">
-		      		<p style="font-weight: bold; font-size: 115%; padding-top: 0.3em;">BUY NOW</p>
-					<p style="padding-bottom: 0.1em;">Delivery in a hour or get at the supermarket</p>
-		      	</a>
 			</div>
 	    </div>
 	</div>
 	@if(count($sameproduct)>0)
-		<div class="panel">
-	    	<div class="panel-heading">COMPARE WITH SIMILAR PRODUCTS</div>
-		    <div class="panel-body">
-		        @foreach($sameproduct as $item)
-	                <div class="col-md-3">
-	                    <div class="thumbnail">
-	                        <a href="{{route('product',$item)}}"><img src="{{asset('storage/'.$item->images[0]->url)}}"></a>
-	                        <div class="caption">
-	                            <p><a href="{{route('product',$item)}}">{{ $item->name }}</a></p>
-	                            <p><b style="color: red;">{{ number_format($item->price,0, '', '.')}}₫</b></p>
-	                            <button class="btn btn-success" style="margin-bottom: 1em;">
-	                                <span class="fa fa-shopping-cart fa-1x"> Add to cart</span> 
-	                            </button>
-	                            <a href="{{route('compare',[$product, $item]) }}" style="border:none; color:blue; font-weight:normal; margin:2em;">
-	                            	Detailed comparison
-	                            </a>
-	                        </div>
-	                    </div>
-	                </div>
-	            @endforeach
+		<div class="col-md-12 index" style="margin-top: 2em;">
+		    <div class="col-md-12 title">
+		        Điện thoại tương tự
 		    </div>
-		</div>       
+		    @foreach($sameproduct as $product)
+		        <div class="col-md-4 card">
+		            <a href="{{route('product',$product)}}">
+		                <img class="col-md-4 image" src="{{asset('storage/'.$product->images[1]->url)}}">
+		            </a>
+		            <div class="col-md-7">
+		                <p class="rating">* * * * *</p>
+		                <a href="{{route('product',$product)}}">
+		                    <p class="name">{{$product->name}}</p>
+		                </a>
+		                <p class="price">{{ number_format($product->price,0, '', '.')}}₫</p>
+		                <a href="{{route('compare',[$product, $product]) }}" style="color:blue;">
+                        	Detailed comparison
+                        </a> 
+		            </div>
+		            <div class="col-md-1">
+		                <i class="fa fa-heart cart-plus"></i>              
+		            </div>
+		                       
+		        </div>
+		    @endforeach  
+		</div>
 	@endif       
 </div>
 @endsection 

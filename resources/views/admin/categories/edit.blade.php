@@ -25,7 +25,7 @@
                             @csrf
                             <input name="_method" type="hidden" value="PUT">
                             <div class="form-group">
-                                <label>Name</label>
+                                <label>Name<span style="color: red">*</span></label>
                                 <input class="form-control" required="" name="name" value="{{ $category->name }}"  placeholder="Please enter category name" />
                             </div>
                            
