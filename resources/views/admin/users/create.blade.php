@@ -29,27 +29,27 @@
                         <form action="{{ route('users.store')}}" method="POST">
                           	@csrf
                             <div class="form-group">
-                                <label>Name</label>
+                                <label>Name<span style="color: red">*</span></label>
                                 <input class="form-control" required=""  name="name" value="{{ old('name') }}"
                                     placeholder="Please enter user name" />
                             </div>
                             <div class="form-group">
-                                <label>Tel</label>
+                                <label>Tel<span style="color: red">*</span></label>
                                 <input class="form-control" required=""  name="tel" value="{{ old('tel') }}"
                                     placeholder="Please enter user tel" />
                             </div>
                             <div class="form-group">
-                                <label>Email</label>
+                                <label>Email<span style="color: red">*</span></label>
                                 <input class="form-control" type="email" required=""  name="email" 
                                     value="{{ old('email') }}"  placeholder="Please enter user email" />
                             </div>
                             <div class="form-group">
-                                <label>Password</label>
+                                <label>Password<span style="color: red">*</span></label>
                                 <input class="form-control" type="password" required=""  name="password" 
                                     value="{{ old('password') }}"  placeholder="Please enter user password" />
                             </div>
                             <div class="form-group">
-                                <label>Type</label>
+                                <label>Type<span style="color: red">*</span></label>
                                 <select class="form-control" name="user_type">
                                 	<option value="0">Customer</option>
                                 	<option value="1">Admin</option>

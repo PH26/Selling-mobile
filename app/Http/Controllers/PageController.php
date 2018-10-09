@@ -11,7 +11,7 @@ class PageController extends Controller
 
     public function __construct(){
         $categories = Category::all();
-        $newproduct = Product::orderBy('id', 'desc')->take(4)->get();
+        $newproduct = Product::orderBy('id', 'desc')->take(6)->get();
         view()->share('categories',$categories);
         view()->share('newproduct',$newproduct);
     }
@@ -31,7 +31,7 @@ class PageController extends Controller
 
     public function product(Product $product)
     {
-        $sameproduct = Product::where('price',$product->price)->where('id','<>',$product->id)->take(4)->get();
+        $sameproduct = Product::where('price',$product->price)->where('id','<>',$product->id)->take(3)->get();
         return view('pages.product', compact('product','sameproduct'));
 
     }

@@ -13,23 +13,23 @@
   <link rel="stylesheet" href="{{ asset('fonts/font-awesome.min.css')}}">
   <!-- Ionicons -->
   <link rel="stylesheet" href="{{ asset('fonts/ionicons.min.css')}}">
+  <link href="https://fonts.googleapis.com/css?family=Dancing+Script|Itim|Lobster|Montserrat:500|Noto+Serif|Nunito|Patrick+Hand|Roboto+Mono:100,100i,300,300i,400,400i,500,500i,700,700i|Roboto+Slab|Saira" rel="stylesheet">
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
+  <style>
+    *{
+      font-family: 'Roboto Slab', serif;   
+    }
+  </style>
 </head>
-<body style="background: #f0f5f5;">
+<body>
     
         @include('layouts.header')
-        @include('layouts.slide')
-        <div class="container" style="margin:0; width: 98%;" >
-            @include('layouts.menu')
-            <div class="col-md-10">
-                @yield('content')
-            </div>
-        </div>
+        @yield('content')
         @include('layouts.footer')
                
 <!-- jQuery 2.2.3 -->
