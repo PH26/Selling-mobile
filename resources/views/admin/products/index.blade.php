@@ -1,12 +1,12 @@
 @extends('admin.layouts.master')
 @section('content')            
-<div class="container">
+<div class="container" style="width: 100%">
    <div class="panel panel-default">
         <div class="panel-heading">List Products</div>
         <div class="panel-body">
             <div>            
                 @if (session('success'))
-                    <div class="alert" style="background:#dff0d8; color:#4f844f" role="alert">
+                    <div class="alert alert-success" role="alert">
                         {{ session('success') }}
                     </div>
                 @endif     

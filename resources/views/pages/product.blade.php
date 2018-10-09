@@ -21,7 +21,8 @@
     }
     .index .card:hover{
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-        transition: box-shadow 0.5s; 
+        transition: box-shadow 0.5s;
+        border:0.1px solid #3498DB; 
     }
     .index .card:hover img{
         opacity: 0.8;
@@ -34,13 +35,11 @@
     .index .card .name{
         font-weight: bold;
         font-size: 125%;
-        font-family: 'inherit', serif; 
     }
     .index .card .price{
         font-size: 120%;
-        color: #a0c864;
+        color: red;
         font-weight: bold;
-        font-family: 'inherit', serif; 
     }
     .index .card .cart-plus{
         color: #a0c864;
@@ -56,9 +55,7 @@
 	.fa-search{
 		padding-bottom: 0.2em;
 	}
-	.panel *{
-		font-family: 'inherit', serif;
-	}
+	
 	.panel-heading{
 		font-weight: bold;
 		font-size: 150%;
@@ -141,10 +138,10 @@
 					<div class="col-md-4 product-price">{{ number_format($product->price,0, '', '.')}}₫</div>
 					<div class="col-md-8">
 						<div class="col-md-8">
-							<p class="col-md-12 add-cart">Thêm vào giỏ hàng</p>
+							<p class="col-md-12 add-cart">ADD TO CART</p>
 						</div>
 						<div class="col-md-4">
-							<a class="col-md-12 buy" href="#">Mua Ngay</a>
+							<a class="col-md-12 buy" href="#">BUY NOW</a>
 						</div>                        
 					</div>
 				</div>	
@@ -174,7 +171,7 @@
 		      		<div class="col-md-8">{{$product->ram}}</div>
 		      	</div>
 		      	<div class="row properties">
-		      		<div class="col-md-4">Internal memory:</div>
+		      		<div class="col-md-4">Memory:</div>
 		      		<div class="col-md-8">{{$product->memory}}</div>
 		      	</div>
 		      	<div class="row properties">
@@ -182,7 +179,7 @@
 		      		<div class="col-md-8">{{$product->sim}}</div>
 		      	</div>
 		      	<div class="row properties">
-		      		<div class="col-md-4">Battery capacity:</div>
+		      		<div class="col-md-4">PIN:</div>
 		      		<div class="col-md-8">{{$product->pin}}</div>
 		      	</div>
 		      	<div class="row properties">
@@ -195,7 +192,7 @@
 	@if(count($sameproduct)>0)
 		<div class="col-md-12 index" style="margin-top: 2em;">
 		    <div class="col-md-12 title">
-		        Điện thoại tương tự
+		        Compare with similar phone
 		    </div>
 		    @foreach($sameproduct as $product)
 		        <div class="col-md-4 card">
@@ -213,7 +210,7 @@
                         </a> 
 		            </div>
 		            <div class="col-md-1">
-		                <i class="fa fa-heart cart-plus"></i>              
+		                <i class="fa fa-shopping-cart fa-2x cart-plus"></i>            
 		            </div>
 		                       
 		        </div>

@@ -5,8 +5,8 @@
 	<title>Activation</title>
 </head>
 <body>
-	<p>Wellcome,<b>{{ $name }}</b> </p>
-	Please active your account:
+	<p>Welcome,<b>{{ $name }}</b> </p>
+	<p>Click to active your account:</p>
 	<a href="{{ url('user/activation', $link)}}">{{ url('user/activation', $link)}}</a> 
 	<p>Thanks!</p>
 </body>

@@ -129,7 +129,7 @@
 		</div>
 		<div class="col-md-2">
 			<div class="dropdown">
-				<button onclick="myFunction()" class="dropbtn">SẢN PHẨM 
+				<button onclick="myFunction()" class="dropbtn">CATEGORIES 
 					<i class="fa fa-caret-down" style="display: inline;padding-left: 0.5em;"></i>
 				</button>
 				<div id="myDropdown" class="dropdown-content">
@@ -143,7 +143,7 @@
 		</div>
 		<div class="col-md-4">
 			<form class="example" action="">
-			  <input type="text" placeholder="Tìm sản phẩm" name="search">
+			  <input type="text" placeholder="Find your phone" name="search">
 			  <button type="submit"><i class="fa fa-search"></i></button>
 			</form>
 		</div>
@@ -160,7 +160,7 @@
 			@else
 				<div class="col-md-7">
 					<a href="{{route('login')}}">
-						<button class="btn info">ĐĂNG NHẬP</button>
+						<button class="btn info">Login</button>
 					</a>
 				</div>
 			@endif		
@@ -168,7 +168,7 @@
 				<a href="{{route('index')}}">
 						<button class="btn" style="padding: 0.3em">
 							<i class="fa fa-shopping-cart fa-2x col-md-2"></i>
-							<p style="padding-top: 0.5em;">Giỏ hàng</p>
+							<p style="padding-top: 0.5em;">Your cart</p>
 						</button>
 					</a>
 			</div>

@@ -1,8 +1,12 @@
 @extends('layouts.master')
 @section('content')
 <style>
+	.compare{
+		margin-top:7em;
+		font-family: 'inherit', serif; 
+	}
 	.panel-heading{
-		background: #00e68a;
+		background: #3498DB;
 		border-radius: 0;
 		font-weight: bold;
 		color: white;
@@ -11,32 +15,38 @@
 	.product-price{
 		color: red;
 		font-weight: bold;
-		font-size: 150%;
+		font-size: 130%;
 		padding-top: 1em;
 	}
-	.buy-now{
-		margin-top: 0.5em;
-		border-radius: 0.3em;
+	.add-cart{
+		background: #63ac34;
+		text-align: center;
+		color:white;
+		padding: 0.5em;
+		margin-bottom: 0.5em;
+		cursor: pointer;
+	}
+	.add-cart:hover{
+		text-decoration: none;
+		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+		color: white;
+	}
+	.buy{
 		background: #ff751a;
 		text-align: center;
 		color:white;
+		padding: 0.5em;
+		margin-bottom: 0.5em;
 	}
-	.buy-now:visited p{
+	.buy:hover{
+		text-decoration: none;
+		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 		color: white;
-	}
-	.buy-now:hover p{
-		color: white;	
-	}
-	.buy-now:active p{
-		color: white;
-	}
-	.col-md-2{
-		font-weight: bold;
 	}
 	
 </style>
    
-<div class="col-md-12">
+<div class="col-md-12 compare">
 	<div class="panel">
     	<div>
     		<div class="col-md-2 panel-heading" style="padding-left: 2em;">Name</div>
@@ -76,7 +86,7 @@
 			<div class="col-md-5">{{$product->ram}}</div>
 			<div class="col-md-5">{{$product2->ram}}</div>
 			<hr>
-			<div class="col-md-2">Internal memory</div>
+			<div class="col-md-2">Memory</div>
 			<div class="col-md-5">{{$product->memory}}</div>
 			<div class="col-md-5">{{$product2->memory}}</div>
 			<hr>
@@ -84,7 +94,7 @@
 			<div class="col-md-5">{{$product->sim}}</div>
 			<div class="col-md-5">{{$product2->sim}}</div>
 			<hr>
-			<div class="col-md-2">Battery capacity</div>
+			<div class="col-md-2">PIN</div>
 			<div class="col-md-5">{{$product->pin}}</div>
 			<div class="col-md-5">{{$product2->pin}}</div>	
 			<hr>
@@ -139,16 +149,20 @@
 			</div>
 			<hr>
 			<div class="col-md-5 col-md-offset-2">
-				<a class="col-md-12 buy-now" href="#">
-		      		<p style="font-weight: bold; font-size: 115%; padding-top: 0.3em;">BUY NOW</p>
-					<p style="padding-bottom: 0.1em;">Delivery in a hour or get at the supermarket</p>
-		      	</a>
+				<div class="col-md-6">
+							<p class="col-md-12 add-cart">BUY NOW</p>
+						</div>
+						<div class="col-md-4">
+							<a class="col-md-12 buy" href="#">ADD TO CART</a>
+						</div> 
 			</div>
 			<div class="col-md-5">
-				<a class="col-md-12 buy-now" href="#">
-		      		<p style="font-weight: bold; font-size: 115%; padding-top: 0.3em;">BUY NOW</p>
-					<p style="padding-bottom: 0.1em;">Delivery in a hour or get at the supermarket</p>
-		      	</a>
+				<div class="col-md-6">
+							<p class="col-md-12 add-cart">BUY NOW</p>
+						</div>
+						<div class="col-md-4">
+							<a class="col-md-12 buy" href="#">ADD TO CART</a>
+						</div> 
 			</div>	
 	      	
 		</div>

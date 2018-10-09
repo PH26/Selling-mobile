@@ -7,9 +7,13 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header" style="background: black; font-weight: bold; color: white;">{{ __('Login') }}</div>
+                <div class="card-header" style="background: #3498DB; font-weight: bold; color: white;">{{ __('LOGIN') }}</div>
                 @if (session('error'))
-                    <p style="color: red; text-align: center;">{{ session('error') }}</p>
+                    <div class="alert alert-danger">
+                    <p>
+                      {{ session('error') }}
+                    </p>
+                  </div>
                 @endif
                 @if ($message = Session::get('success'))
                   <div class="alert alert-success">
@@ -30,7 +34,7 @@
                         @csrf
 
                         <div class="form-group row">
-                            <label for="email" class="col-sm-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                            <label for="email" class="col-sm-4 col-form-label text-md-right">{{ __('E-Mail') }}</label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
