@@ -1,15 +1,20 @@
 @extends('admin.layouts.master')
 @section('content')            
-<div class="container">
+<div class="container" style="width: 100%">
    <div class="panel panel-default">
         <div class="panel-heading">List User</div>
         <div class="panel-body">
             <div>            
                 @if (session('success'))
-                    <div class="alert" style="background:#dff0d8; color:#4f844f" role="alert">
+                    <div class="alert alert-success" role="alert">
                         {{ session('success') }}
                     </div>
-                @endif     
+                @endif
+                @if (session('error'))
+                    <div class="alert alert-danger" role="alert">
+                        {{ session('error') }}
+                    </div>
+                @endif        
             </div>
             <div class="table-responsive">
                 <div class="col-md-12">
@@ -44,8 +49,7 @@
                                 <th>Email</th>
                                 <th>Type</th>
                                 <th>Active</th>
-                                <th>Edit</th>
-                                <th>Delete</th>
+                                <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -72,11 +76,13 @@
                                     @endif
                                 </td>                                
                                 <td>
-                                    <a href="{{ route('users.edit',$user)}}">
+                                    
+                                     <button type="button" value="{{$user->id}}" class="btn btn-success">
+                                        <a href="{{ route('users.edit',$user)}}">
                                         <i class="fa fa-pencil fa-fw" style="color:black"></i>
                                     </a>
-                                </td>
-                                <td class="center">
+                                    </button>   
+                                
                                     <button type="button" value="{{$user->id}}" class="btn btn-danger">
                                         <i class="fa fa-trash-o  fa-fw" style="color:black"></i>
                                     </button>                                  

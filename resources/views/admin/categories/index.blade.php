@@ -1,13 +1,13 @@
 @extends('admin.layouts.master')
 @section('content')            
-<div class="container">
+<div class="container" style="width: 100%;">
    <div class="panel panel-default">
         <div class="panel-heading">List Categories</div>
         <!-- Button trigger modal -->
         <div class="panel-body">
             <div>            
                 @if (session('success'))
-                    <div class="alert" style="background:#dff0d8; color:#4f844f" role="alert">
+                    <div class="alert alert-success" role="alert">
                         {{ session('success') }}
                     </div>
                 @endif
@@ -46,8 +46,7 @@
                         <tr>
                             <th>ID</th>
                             <th>Name</th>
-                            <th>Edit</th>
-                            <th>Delete</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                    <tbody>
@@ -55,12 +54,12 @@
                             <tr>
                                 <td>{{ $category->id }}</td>
                                 <td>{{ $category->name }}</td>
-                                <td>
-                                    <a href="{{ route('categories.edit',$category)}}">
-                                        <i class="fa fa-pencil fa-fw" style="color:black"></i>
-                                    </a>
-                                </td>
-                                <td class="center">
+                                <td>                                   
+                                    <button type="button" value="{{$category->id}}" class="btn btn-success">
+                                        <a href="{{ route('categories.edit',$category)}}">
+                                            <i class="fa fa-pencil fa-fw" style="color:black"></i>
+                                        </a>
+                                    </button> 
                                     <button type="button" value="{{$category->id}}" class="btn btn-danger">
                                         <i class="fa fa-trash-o  fa-fw" style="color:black"></i>
                                     </button>                                  

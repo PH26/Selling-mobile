@@ -20,6 +20,7 @@
 
     }
     .index .card:hover{
+        border:0.1px solid #3498DB;
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
         transition: box-shadow 0.5s; 
     }
@@ -34,13 +35,12 @@
     .index .card .name{
         font-weight: bold;
         font-size: 125%;
-        font-family: 'inherit', serif; 
     }
     .index .card .price{
         font-size: 120%;
-        color: #a0c864;
+        color: red;
+        display: inline;
         font-weight: bold;
-        font-family: 'inherit', serif; 
     }
     .index .card .cart-plus{
         color: #a0c864;
@@ -60,7 +60,7 @@
         @if(isset($category))
             {{ strtoupper($category->name)}}           
         @else
-            Điện thoại nổi bật nhất
+            Prominent phone
         @endif   
     </div>
     @foreach($products as $product)
@@ -76,7 +76,7 @@
                 <p class="price">{{ number_format($product->price,0, '', '.')}}₫</p>
             </div>
             <div class="col-md-1">
-                <i class="fa fa-heart cart-plus"></i>              
+                <i class="fa fa-shopping-cart fa-2x cart-plus"></i>            
             </div>            
         </div>
     @endforeach  
@@ -84,7 +84,7 @@
 
 <div class="col-md-12 index" style="margin-top: 2em;">
     <div class="col-md-12 title">
-        Điện thoại mới nhất
+        Latest phone
     </div>
     @foreach($newproduct as $product)
         <div class="col-md-4 card">
@@ -92,14 +92,14 @@
                 <img class="col-md-4 image" src="{{asset('storage/'.$product->images[1]->url)}}">
             </a>
             <div class="col-md-7">
-                <p class="rating">* * * * *</p>
+                <p class="rating"></p>
                 <a href="{{route('product',$product)}}">
                     <p class="name">{{$product->name}}</p>
                 </a>
                 <p class="price">{{ number_format($product->price,0, '', '.')}}₫</p>
             </div>
             <div class="col-md-1">
-                <i class="fa fa-heart cart-plus"></i>              
+                <i class="fa fa-shopping-cart fa-2x cart-plus"></i>
             </div>            
         </div>
     @endforeach  
