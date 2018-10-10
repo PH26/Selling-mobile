@@ -1,9 +1,13 @@
 @extends('layouts.master')
 @section('content')
 <style>
+	.fa-search{
+		padding-bottom: 0.2em;
+	}
 	.compare{
 		margin-top:7em;
-		font-family: 'inherit', serif; 
+		font-family: 'inherit', serif;
+		font-size: 95%; 
 	}
 	.panel-heading{
 		background: #3498DB;
@@ -150,19 +154,32 @@
 			<hr>
 			<div class="col-md-5 col-md-offset-2">
 				<div class="col-md-6">
-							<p class="col-md-12 add-cart">BUY NOW</p>
-						</div>
-						<div class="col-md-4">
-							<a class="col-md-12 buy" href="#">ADD TO CART</a>
-						</div> 
+					<p class="col-md-12 add-cart">BUY NOW</p>
+				</div>
+				<div class="col-md-4">
+					<form method="GET" action="{{route('cart')}}">
+	                    <input type="hidden" name="product_id" value="{{$product->id}}">
+	                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+	                    <button type="submit" class="add-to-cart" style="background: transparent; border: none;">
+	                        <a class="col-md-12 buy" >ADD TO CART</a>
+	                    </button>
+	                </form>
+					
+				</div> 
 			</div>
 			<div class="col-md-5">
 				<div class="col-md-6">
-							<p class="col-md-12 add-cart">BUY NOW</p>
-						</div>
-						<div class="col-md-4">
-							<a class="col-md-12 buy" href="#">ADD TO CART</a>
-						</div> 
+					<p class="col-md-12 add-cart">BUY NOW</p>
+				</div>
+				<div class="col-md-4">
+					<form method="GET" action="{{route('cart')}}">
+	                    <input type="hidden" name="product_id" value="{{$product2->id}}">
+	                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+	                    <button type="submit" class="add-to-cart" style="background: transparent; border: none;">
+	                        <a class="col-md-12 buy" >ADD TO CART</a>
+	                    </button>
+	                </form>
+				</div> 
 			</div>	
 	      	
 		</div>

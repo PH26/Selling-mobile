@@ -29,8 +29,8 @@
     }
     .index .card .rating{
         color: yellow; 
-        font-size: 1.5em; 
-        font-weight: bold;
+        font-size: 1em;
+        display: inline;
     }
     .index .card .name{
         font-weight: bold;
@@ -53,6 +53,10 @@
         color: #2196F3;
         text-decoration: none;
     }
+    .index .add-to-cart{
+        border:none;
+        background: transparent;
+    }
 </style>
 @include('layouts.slide')
 <div class="col-md-12 index">
@@ -68,15 +72,25 @@
             <a href="{{route('product',$product)}}">
                 <img class="col-md-4 image" src="{{asset('storage/'.$product->images[1]->url)}}">
             </a>
-            <div class="col-md-7">
-                <p class="rating">* * * * *</p>
+            <div class="col-md-6">
+                <i class="fa fa-star rating"></i>
+                <i class="fa fa-star rating"></i>
+                <i class="fa fa-star rating"></i>
+                <i class="fa fa-star rating"></i>
+                <i class="fa fa-star rating"></i>
                 <a href="{{route('product',$product)}}">
                     <p class="name">{{$product->name}}</p>
                 </a>
                 <p class="price">{{ number_format($product->price,0, '', '.')}}₫</p>
             </div>
-            <div class="col-md-1">
-                <i class="fa fa-shopping-cart fa-2x cart-plus"></i>            
+            <div class="col-md-2">
+                <form method="GET" action="{{route('cart')}}">
+                    <input type="hidden" name="product_id" value="{{$product->id}}">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    <button type="submit" class="add-to-cart">
+                        <img src="{{asset('dist/img/cart.png')}}">
+                    </button>
+                </form>
             </div>            
         </div>
     @endforeach  
@@ -91,16 +105,25 @@
             <a href="{{route('product',$product)}}">
                 <img class="col-md-4 image" src="{{asset('storage/'.$product->images[1]->url)}}">
             </a>
-            <div class="col-md-7">
-                <p class="rating"></p>
+            <div class="col-md-6">
+                <i class="fa fa-star rating"></i>
+                <i class="fa fa-star rating"></i>
                 <a href="{{route('product',$product)}}">
                     <p class="name">{{$product->name}}</p>
                 </a>
                 <p class="price">{{ number_format($product->price,0, '', '.')}}₫</p>
             </div>
-            <div class="col-md-1">
-                <i class="fa fa-shopping-cart fa-2x cart-plus"></i>
+            <div class="col-md-2">
+                <form method="GET" action="{{route('cart')}}">
+                    <input type="hidden" name="product_id" value="{{$product->id}}">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    <button type="submit" class="add-to-cart">
+                        <img src="{{asset('dist/img/cart.png')}}">
+                    </button>
+                </form>
             </div>            
         </div>
     @endforeach  
 </div>
+
+@stop
