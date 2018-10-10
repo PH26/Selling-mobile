@@ -29,6 +29,7 @@
 <body>
     
         @include('layouts.header')
+        @include('layouts.slide')
         @yield('content')
         @include('layouts.footer')
                
@@ -40,5 +41,7 @@
 <script src="{{ asset('plugins/slimScroll/jquery.slimscroll.min.js')}}"></script>
 <!-- FastClick -->
 <script src="{{ asset('plugins/fastclick/fastclick.js')}}"></script>
+
 </body>
+
 </html>

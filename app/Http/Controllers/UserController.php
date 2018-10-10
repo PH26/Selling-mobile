@@ -121,7 +121,7 @@ class UserController extends Controller
     public function login(Request $request)
     {   
         if (Auth::attempt(['email'=>$request->email,'password'=>$request->password,'user_type'=>0,'active'=>1])) {
-            return redirect()->route('index');          
+            return redirect()->back();        
         }else{
             return redirect()->route('login')->with('error', 'Incorrect information!!!');
         }

@@ -59,6 +59,7 @@
 	.panel-heading{
 		font-weight: bold;
 		font-size: 150%;
+		margin-left: 2em;
 		border-bottom: 2px solid #f2eded;
 	}
 	.product-price{
@@ -74,7 +75,8 @@
 		font-size: 110%;
 	}
 	.super{
-		height: 30em;
+		height: 20em;
+		width: 80%;
 	}
 	.super .item{
 		width: 70%;
@@ -111,7 +113,7 @@
     }
 </style>
    
-<div class="col-md-12" style="margin-top: 7em">
+<div class="col-md-12">
 	<div class="panel">
     	<div class="panel-heading">{{ strtoupper($product->name) }}</div>
 	    <div class="panel-body">

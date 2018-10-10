@@ -58,7 +58,6 @@
         background: transparent;
     }
 </style>
-@include('layouts.slide')
 <div class="col-md-12 index">
     <div class="col-md-12 title">
         @if(isset($category))
