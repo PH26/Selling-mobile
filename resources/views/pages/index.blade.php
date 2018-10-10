@@ -64,7 +64,7 @@
         @if(isset($category))
             {{ strtoupper($category->name)}}           
         @else
-            Prominent phone
+            Prominent phones
         @endif   
     </div>
     @foreach($products as $product)
@@ -98,7 +98,7 @@
 
 <div class="col-md-12 index" style="margin-top: 2em;">
     <div class="col-md-12 title">
-        Latest phone
+        News phones
     </div>
     @foreach($newproduct as $product)
         <div class="col-md-4 card">
@@ -125,5 +125,17 @@
         </div>
     @endforeach  
 </div>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    var button = $('.btn-danger');
+    button.click(function(){
+        if (confirm("Do you want to delete?")) {
+            var url = '{{ route("products.destroy", ":id") }}';
+            url = url.replace(':id', $(this).val());
+            window.location.href=url;
+        }
+    });
+});
+</script>
 @stop
