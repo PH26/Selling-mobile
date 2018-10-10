@@ -5,7 +5,7 @@
 		width: 97%;
 	}
 	.carousel-inner{
-		height: 24em;
+		height: 23em;
 		width: 94%;
 		object-fit: cover;
 	}
@@ -16,20 +16,17 @@
 	        <li data-target="#carousel-id" data-slide-to="0" class="active"></li>
 	        <li data-target="#carousel-id" data-slide-to="1" class=""></li>
 	        <li data-target="#carousel-id" data-slide-to="2" class=""></li>
-	        <li data-target="#carousel-id" data-slide-to="3" class=""></li>
 	    </ol>
 	    <div class="carousel-inner">
 	        <div class="item active">
-	            <img src="{{asset('dist/img/slides/pic5.png')}}">            
+	            <img src="{{asset('dist/img/slides/2.jpg')}}">            
 	        </div>
 	        <div class="item">
-	            <img src="{{asset('dist/img/slides/pic1.png')}}">	           
+	            <img src="{{asset('dist/img/slides/3.jpg')}}">	           
 	        </div>
 	        <div class="item"> 
-	            <img src="{{asset('dist/img/slides/pic6.jpg')}}">
+	            <img src="{{asset('dist/img/slides/1.png')}}">
 	        </div>
-	        <div class="item"> 
-	            <img src="{{asset('dist/img/slides/pic7.jpg')}}">
 	        </div>
 	    </div>
 	</div>

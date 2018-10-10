@@ -281,6 +281,5 @@
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('dist/js/demo.js')}}"></script>
 <script src="{{ asset('js/admin.js')}}"></script>
-
 </body>
 </html>
