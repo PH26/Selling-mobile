@@ -117,7 +117,7 @@
 	    color: white;
 	}
 	.fa-search{
-		padding-bottom: 0.4em;
+		padding-bottom: 0.2em;
 	}
 	.cart{
 		margin-top: 0.5em;
@@ -179,7 +179,7 @@
 			<div class="col-md-5 cart">
 				<a href="{{route('cart.view')}}">
 					<img src="{{asset('dist/img/cart.png')}}" style="width: 40%;">
-					<span class="total">2</span>
+					<span class="total">{{Cart::content()->count()}}</span>
 				</a>
 			</div>
 		</div>
