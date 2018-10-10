@@ -119,6 +119,18 @@
 	.fa-search{
 		padding-bottom: 0.4em;
 	}
+	.cart{
+		margin-top: 0.5em;
+	}
+	.cart a{
+		text-decoration: none;
+	}
+	.cart .total{
+		border-radius: 50%;
+		background: red;
+		padding: 0 0.5em;
+		color: white;
+	}
 </style>
 <header>
 	<div class="row">
@@ -164,13 +176,11 @@
 					</a>
 				</div>
 			@endif		
-			<div class="col-md-5 page">
-				<a href="{{route('index')}}">
-						<button class="btn" style="padding: 0.3em">
-							<i class="fa fa-shopping-cart fa-2x col-md-2"></i>
-							<p style="padding-top: 0.5em;">Your cart</p>
-						</button>
-					</a>
+			<div class="col-md-5 cart">
+				<a href="{{route('cart.view')}}">
+					<img src="{{asset('dist/img/cart.png')}}" style="width: 40%;">
+					<span class="total">2</span>
+				</a>
 			</div>
 		</div>
 	</div>

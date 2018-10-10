@@ -29,8 +29,8 @@
     }
     .index .card .rating{
         color: yellow; 
-        font-size: 1.5em; 
-        font-weight: bold;
+        font-size: 1em;
+        display: inline;
     }
     .index .card .name{
         font-weight: bold;
@@ -105,7 +105,10 @@
 		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 		color: white;
 	}
-	
+	.add-to-cart{
+        border:none;
+        background: transparent;
+    }
 </style>
    
 <div class="col-md-12" style="margin-top: 7em">
@@ -137,10 +140,16 @@
 				<div class="row">
 					<div class="col-md-4 product-price">{{ number_format($product->price,0, '', '.')}}₫</div>
 					<div class="col-md-8">
-						<div class="col-md-8">
-							<p class="col-md-12 add-cart">ADD TO CART</p>
+						<div class="col-md-6">
+							<form method="GET" action="{{route('cart')}}">
+			                    <input type="hidden" name="product_id" value="{{$product->id}}">
+			                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+			                    <button type="submit" class="add-to-cart">
+			                        <img src="{{asset('dist/img/cart.png')}}" style="width: 20%;">
+			                    </button>
+			                </form>
 						</div>
-						<div class="col-md-4">
+						<div class="col-md-6">
 							<a class="col-md-12 buy" href="#">BUY NOW</a>
 						</div>                        
 					</div>
@@ -194,27 +203,36 @@
 		    <div class="col-md-12 title">
 		        Compare with similar phone
 		    </div>
-		    @foreach($sameproduct as $product)
+		    @foreach($sameproduct as $item)
 		        <div class="col-md-4 card">
-		            <a href="{{route('product',$product)}}">
-		                <img class="col-md-4 image" src="{{asset('storage/'.$product->images[1]->url)}}">
+		            <a href="{{route('product',$item)}}">
+		                <img class="col-md-4 image" src="{{asset('storage/'.$item->images[1]->url)}}">
 		            </a>
-		            <div class="col-md-7">
-		                <p class="rating">* * * * *</p>
-		                <a href="{{route('product',$product)}}">
-		                    <p class="name">{{$product->name}}</p>
+		            <div class="col-md-6">
+		                    <i class="fa fa-star rating"></i>
+		                    <i class="fa fa-star rating"></i>
+		                    <i class="fa fa-star rating"></i>
+		                    <i class="fa fa-star rating"></i>
+		                    <i class="fa fa-star rating"></i>
+		                <a href="{{route('product',$item)}}">
+		                    <p class="name">{{$item->name}}</p>
 		                </a>
-		                <p class="price">{{ number_format($product->price,0, '', '.')}}₫</p>
-		                <a href="{{route('compare',[$product, $product]) }}" style="color:blue;">
+		                <p class="price">{{ number_format($item->price,0, '', '.')}}₫</p>
+		                <a href="{{route('compare',[$product, $item]) }}" style="color:blue;">
                         	Detailed comparison
-                        </a> 
+                        </a>
 		            </div>
-		            <div class="col-md-1">
-		                <i class="fa fa-shopping-cart fa-2x cart-plus"></i>            
-		            </div>
-		                       
+		            <div class="col-md-2">
+		                <form method="GET" action="{{route('cart')}}">
+		                    <input type="hidden" name="product_id" value="{{$product->id}}">
+		                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+		                    <button type="submit" class="add-to-cart">
+		                        <img src="{{asset('dist/img/cart.png')}}">
+		                    </button>
+		                </form>
+		            </div>            
 		        </div>
-		    @endforeach  
+		    @endforeach 
 		</div>
 	@endif       
 </div>

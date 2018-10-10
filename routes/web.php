@@ -10,6 +10,10 @@ Auth::routes();
 Route::get('/user/activation/{token}', 'Auth\RegisterController@userActivation');
 Route::post('/login','UserController@login')->name("users.login");
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/cart', 'CartController@cart')->name('cart');
+Route::get('/cart/view', 'CartController@view')->name('cart.view');
+Route::get('/cart/remove','CartController@remove')->name("cart.remove");
+Route::get('/cart/destroy', 'CartController@destroy')->name('cart.destroy');
 
 // End route of Pages
 
