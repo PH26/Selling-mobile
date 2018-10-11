@@ -59,6 +59,10 @@ Route::group(['prefix'=>'admin','middleware'=>'admin'],function () {
 		    Route::get('/delete/{id}','ProductController@destroy')->name("products.destroy");
 		});
 
+		Route::group(['prefix'=>'orders'],function () {
+		    Route::get('/', 'OrderController@list')->name("orders.list");
+		});
+
 });
 // End route of Admin
 
