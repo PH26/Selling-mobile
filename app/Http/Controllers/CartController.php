@@ -79,5 +79,6 @@ class CartController extends Controller
             $detail->save();
         }
         Cart::destroy();
+        return redirect()->route('index');
     }
 }

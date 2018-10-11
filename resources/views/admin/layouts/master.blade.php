@@ -200,7 +200,7 @@
         </li>
 
         <li class="treeview">
-          <a href="#">
+          <a href="{{route('orders.list')}}">
             <i class="fa fa-shopping-cart"></i> <span>Orders</span>
           </a>
         </li>

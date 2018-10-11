@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Order;
-use Cart;
-use Auth;
 use App\Order_Detail;
 use App\Product;
 use Illuminate\Http\Request;
@@ -16,9 +14,10 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function list()
     {
-        //
+        $orders= Order::orderBy('status')->orderBy('id', 'desc')->paginate(10);
+        return view('admin.orders.index',compact('orders'));
     }
 
     /**
