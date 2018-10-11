@@ -13,15 +13,21 @@
                     <div class="col-md-12">
                         <div class="col-md-3">
                             <p style="font-weight:bold;font-family:serif;font-size:1.15em">Total Users</p>
-                            <p style="margin-left: 1em; color: #dd4b39; font-weight: bold">4</p>
+                            <p style="margin-left: 1em; color: #dd4b39; font-weight: bold">
+                                {{count(App\User::all())}}
+                            </p>
                         </div>
                         <div class="col-md-3">
-                           <p style="font-weight:bold;font-family:serif;font-size:1.15em">New Users Today</p>
-                           <p style="margin-left: 1em; color: #dd4b39; font-weight: bold">2</p>
+                           <p style="font-weight:bold;font-family:serif;font-size:1.15em">Total Products</p>
+                           <p style="margin-left: 1em; color: #dd4b39; font-weight: bold">
+                               {{count(App\Product::all())}}
+                           </p>
                         </div>
                         <div class="col-md-3">
-                            <p style="font-weight: bold; font-family: serif; font-size: 1.15em">Pending</p>
-                            <p style="margin-left: 1em; color: #dd4b39; font-weight: bold">1</p>
+                            <p style="font-weight: bold; font-family: serif; font-size: 1.15em">Total Orders</p>
+                            <p style="margin-left: 1em; color: #dd4b39; font-weight: bold">
+                                {{count(App\Order::all())}}
+                            </p>
                         </div>
                         <div class="col-md-3">
                             <p style="font-weight: bold; font-family: serif; font-size: 1.15em">Roles</p>

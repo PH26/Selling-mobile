@@ -14,7 +14,7 @@ class CategoryController extends Controller
      */
     public function list()
     {
-        $categories = Category::orderBy('id', 'desc')->paginate(10);
+        $categories = Category::orderBy('id', 'desc')->paginate(20);
         return view('admin.categories.index',compact('categories'));
     }
 
@@ -56,10 +56,10 @@ class CategoryController extends Controller
             if($key != ''){
                 $categories = Category::where('id', 'like', '%'.$key.'%')
                         ->orWhere('name', 'like', '%'.$key.'%')
-                        ->orderBy('id', 'desc')->paginate(10);
+                        ->orderBy('id', 'desc')->paginate(20);
             }
             else{
-                $categories = Category::orderBy('id', 'desc')->paginate(10);
+                $categories = Category::orderBy('id', 'desc')->paginate(20);
             }
         return view('admin.categories.index',compact('categories'));
     }
@@ -104,9 +104,8 @@ class CategoryController extends Controller
         $size = count($category->products);
         if ($size == 0) {
             $category->delete();
-            return redirect()->route('categories.list')->with('success', 'Delete a new category successfully');
+            return redirect()->route('categories.list')->with('success', 'Delete category successfully');
         }
-        return redirect()->route('categories.list')->with('error', 'Cannot delete!');
-        
+        return redirect()->route('categories.list')->with('error', 'Cannot delete!');      
     }
 }

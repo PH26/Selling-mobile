@@ -15,7 +15,7 @@ class UserController extends Controller
      */
     public function list()
     {
-        $users = User::orderBy('id', 'desc')->paginate(10);
+        $users = User::orderBy('id', 'desc')->paginate(20);
         return view('admin.users.index',compact('users'));
     }
 
@@ -68,7 +68,7 @@ class UserController extends Controller
                         ->orderBy('id', 'desc')->paginate(20);
             }
             else{
-                $users = User::orderBy('id', 'desc')->paginate(10);
+                $users = User::orderBy('id', 'desc')->paginate(20);
             }
         return view('admin.users.index',compact('users'));
     }
@@ -114,8 +114,12 @@ class UserController extends Controller
     public function destroy($id)
     {
         $user=User::find($id);
-        $user->delete();
-        return redirect()->route('users.list')->with('success', 'Delete a user successfully');
+        $size = count($user->orders);
+        if ($size == 0) {
+            $user->delete();
+            return redirect()->route('users.list')->with('success', 'Delete user successfully');
+        }
+        return redirect()->route('users.list')->with('error', 'Cannot delete!');
     }
 
     public function login(Request $request)

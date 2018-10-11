@@ -16,73 +16,38 @@ class OrderController extends Controller
      */
     public function list()
     {
-        $orders= Order::orderBy('status')->orderBy('id', 'desc')->paginate(10);
+        $orders= Order::orderBy('status')->orderBy('orderdate')->paginate(20);
         return view('admin.orders.index',compact('orders'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function details($id)
     {
-        //
+        $orderdetails= Order_Detail::where('order_id',$id)->get();
+        return view('admin.orders.details',compact('orderdetails','id'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function update($id)
     {
-        //
+        $order = Order::find($id);
+        $order->status=1;
+        $order->save();
+        return redirect()->route('orders.list');
+    }
+    public function search(Request $request)
+    {
+        $key = $request->get('keyword');
+            if($key != ''){
+                $orders = Order::where('id', 'like', '%'.$key.'%')
+                        ->orWhere('orderdate', 'like', '%'.$key.'%')
+                        ->orWhere('tel', 'like', '%'.$key.'%')
+                        ->orWhere('address', 'like', '%'.$key.'%')
+                        ->orWhere('total', 'like', '%'.$key.'%')
+                        ->orderBy('status')->orderBy('orderdate')->paginate(20);
+            }
+            else{
+                $orders= Order::orderBy('status')->orderBy('orderdate')->paginate(20);
+            }
+        return view('admin.orders.index',compact('orders'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Order  $order
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Order $order)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Order  $order
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Order $order)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Order  $order
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Order $order)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Order  $order
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Order $order)
-    {
-        //
-    }
 }

@@ -86,7 +86,12 @@ class ProductController extends Controller
     public function destroy($id)
     {
         $product = Product::find($id);
-        $product->delete();
-        return redirect()->route('products.list')->with('success', 'Delete a new product successfully');
+        $size = count($product->order_details);
+        if ($size == 0) {
+            $product->delete();
+            return redirect()->route('products.list')->with('success', 'Delete product successfully');
+        }
+        return redirect()->route('products.list')->with('error', 'Cannot delete!');
+
     }
 }
