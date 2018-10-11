@@ -14,7 +14,8 @@ Route::get('/cart', 'CartController@cart')->name('cart');
 Route::get('/cart/view', 'CartController@view')->name('cart.view');
 Route::get('/cart/remove','CartController@remove')->name("cart.remove");
 Route::get('/cart/destroy', 'CartController@destroy')->name('cart.destroy');
-
+Route::get('/cart/order', 'CartController@order')->name('cart.order');
+Route::post('/cart/pay', 'CartController@pay')->name('cart.pay');
 // End route of Pages
 
 //************************************************************************//

@@ -69,7 +69,7 @@
     @foreach($products as $product)
         <div class="col-md-4 card">
             <a href="{{route('product',$product)}}">
-                <img class="col-md-4 image" src="{{asset('storage/'.$product->images[1]->url)}}">
+                <img class="col-md-4 image" src="{{asset('storage/'.$product->images[0]->url)}}">
             </a>
             <div class="col-md-6">
                 <i class="fa fa-star rating"></i>
@@ -102,7 +102,7 @@
     @foreach($newproduct as $product)
         <div class="col-md-4 card">
             <a href="{{route('product',$product)}}">
-                <img class="col-md-4 image" src="{{asset('storage/'.$product->images[1]->url)}}">
+                <img class="col-md-4 image" src="{{asset('storage/'.$product->images[0]->url)}}">
             </a>
             <div class="col-md-6">
                 <i class="fa fa-star rating"></i>
@@ -124,17 +124,4 @@
         </div>
     @endforeach  
 </div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script>
-$(document).ready(function(){
-    var button = $('.btn-danger');
-    button.click(function(){
-        if (confirm("Do you want to delete?")) {
-            var url = '{{ route("products.destroy", ":id") }}';
-            url = url.replace(':id', $(this).val());
-            window.location.href=url;
-        }
-    });
-});
-</script>
 @stop

@@ -52,6 +52,13 @@
         color:white;
         background: red;
     }
+    .order a{
+        color: white;
+    }
+    .order a:hover{
+        text-decoration: none;
+        color: white;
+    }
     .btn-default:hover{
         background: red;
     }
@@ -70,7 +77,6 @@
 @stop
 @section('content') 
 <div class="container cart">
-        @if(count($cart))
         <table class=" table table-bordered">
             <thead>
                 <tr>
@@ -83,6 +89,7 @@
                 </tr>
             </thead>
             <tbody>
+                @if(count($cart))
                 @foreach($cart as $item)
                 <?php 
                     $product= App\Product::find($item->id);
@@ -135,12 +142,15 @@
                 </tr>
                 <tr>
                     <td colspan="6">
-                        <div class="order">ORDER</div>
+                        <a href="{{route('index')}}" 
+                            style="float: left; font-size: 120%">Continue to buy
+                        </a>
+                        <div class="order"><a href="{{route('cart.order')}}">ORDER</a></div>
                         <div class="empty">EMPTY</div>
                     </td>
                 </tr>
                 @else
-                    <p>You have no items in the shopping cart</p>
+                    <tr><td colspan="6">You have no items in the shopping cart</td></tr>
                 @endif               
             </tbody>       
         </table>
