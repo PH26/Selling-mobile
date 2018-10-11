@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Redirect;
 use Cart;
+use Auth;
 use App\Product;
+use App\Order;
+use App\Order_Detail;
 
 class CartController extends Controller
 {
@@ -49,5 +52,32 @@ class CartController extends Controller
     public function destroy() {
         Cart::destroy();
         return redirect()->back();;
+    }
+    public function order() {
+        if (!Auth::check()){
+            return redirect()->route('login');
+        }
+        else{
+            $cart = Cart::content();
+            return view('pages.order',compact('cart'));
+        }
+    }
+    public function pay() {
+        $order = new Order();
+        $order->user_id = Auth::user()->id;
+        $order->orderdate =  date('Y-m-d');
+        $order->tel = Request::get('tel');
+        $order->address = Request::get('address');
+        $order->total = Cart::subtotal();
+        $order->save();
+        $cart = Cart::content();
+        foreach($cart as $item){
+            $detail = new Order_Detail();
+            $detail->order_id = $order->id;
+            $detail->product_id = $item->id;
+            $detail->quantity = $item->qty;
+            $detail->save();
+        }
+        Cart::destroy();
     }
 }

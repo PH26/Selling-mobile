@@ -208,7 +208,7 @@
 		    @foreach($sameproduct as $item)
 		        <div class="col-md-4 card">
 		            <a href="{{route('product',$item)}}">
-		                <img class="col-md-4 image" src="{{asset('storage/'.$item->images[1]->url)}}">
+		                <img class="col-md-4 image" src="{{asset('storage/'.$item->images[0]->url)}}">
 		            </a>
 		            <div class="col-md-6">
 		                    <i class="fa fa-star rating"></i>

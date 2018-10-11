@@ -35,7 +35,6 @@ class PageController extends Controller
                             ->where('price', '<',$product->price+500000)
                             ->where('id','<>',$product->id)->take(6)->get();
         return view('pages.product', compact('product','sameproduct'));
-
     }
 
     public function compare(Product $product , Product $product2)
