@@ -1,5 +1,17 @@
 @extends('admin.layouts.master')
-@section('content')            
+@section('content')
+<style>
+    .process{
+        padding: 0.5em 1.4em;
+        background: red;
+        color: white;
+    }
+    .process:hover{
+        color: white;
+        background: blue;
+    }
+
+</style>            
 <div class="container" style="width: 100%">
    <div class="panel panel-default">
         <div class="panel-heading">List Orders</div>
@@ -24,7 +36,7 @@
                         </button> 
                     </div>
                     <div class="col-md-5">
-                        <form action="" method="GET">
+                        <form action="{{route('orders.search')}}" method="GET">
                             <div id="custom-search-input">
                                 <div class="input-group col-md-12">
                                     @csrf
@@ -36,7 +48,7 @@
                                     </span>                                                                
                                 </div>
                             </div>
-                        <form> 
+                        </form> 
                     </div>
                 </div>
                 <hr>
@@ -45,7 +57,7 @@
                         <tr>
                                 <th>ID</th>
                                 <th>Customer</th>
-                                <th>Order Date</th>
+                                <th>Date</th>
                                 <th>Tel</th>
                                 <th>Address</th>
                                 <th>Total</th>
@@ -62,8 +74,16 @@
                                 <td>{{ $order->tel }}</td>
                                 <td>{{ $order->address }}</td>
                                 <td>{{ $order->total }}</td>
-                                <td>{{ $order->status }}</td>
-                                <td>Detail</td>
+                                <td>@if($order->status == 0)
+                                        <a href="{{route('orders.update',$order->id)}}" class="process">Approve</a>
+                                    @else
+                                        <span class="fa fa-check-square-o fa-fw" 
+                                                style="color:green"></span>
+                                    @endif
+                                </td>
+                                <td>
+                                    <a href="{{route('orders.details',$order->id)}}">View</a>
+                                </td>
                             </tr>
                         @endforeach  
                     </tbody>

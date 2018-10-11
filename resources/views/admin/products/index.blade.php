@@ -9,7 +9,12 @@
                     <div class="alert alert-success" role="alert">
                         {{ session('success') }}
                     </div>
-                @endif     
+                @endif
+                @if (session('error'))
+                    <div class="alert alert-danger" role="alert">
+                        {{ session('error') }}
+                    </div>
+                @endif        
             </div>
             <div class="table-responsive">
                 <div class="col-md-12">
@@ -31,7 +36,7 @@
                                     </span>                                                                
                                 </div>
                             </div>
-                        <form> 
+                        </form> 
                     </div>
                 </div>
                 <hr>
@@ -58,9 +63,7 @@
                                 <td>{{ $product->price }}</td>
                                 <td>{{ $product->quantity }}</td>                              
                                 <td>
-                                    <a href="{{ route('products.edit',$product)}}">
-                                        <i class="fa fa-pencil fa-fw" style="color:black"></i>
-                                    </a>
+                                    <a href="{{ route('products.edit',$product)}}">View</a>
                                 </td>
                                 <td class="center">
                                     <button type="button" value="{{$product->id}}" class="btn btn-danger">

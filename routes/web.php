@@ -61,6 +61,9 @@ Route::group(['prefix'=>'admin','middleware'=>'admin'],function () {
 
 		Route::group(['prefix'=>'orders'],function () {
 		    Route::get('/', 'OrderController@list')->name("orders.list");
+		    Route::get('/search', 'OrderController@search')->name("orders.search");
+		    Route::get('/details/{id}', 'OrderController@details')->name("orders.details");
+		    Route::get('/update/{id}', 'OrderController@update')->name("orders.update");
 		});
 
 });
