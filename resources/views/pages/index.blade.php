@@ -3,6 +3,7 @@
 <style>
     .index{      
         margin:0 auto;
+        font-family: 'Lato', sans-serif;
     }
     .index .title{
         font-weight: bold;
@@ -126,4 +127,5 @@
         </div>
     @endforeach  
 </div>
+
 @stop

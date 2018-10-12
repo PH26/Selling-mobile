@@ -5,32 +5,14 @@
 		margin-top: 1em;
 		clear: both;
 	}
-	footer h3{
-		color: #b2b5ba;
+	footer .social{
+		background: white;
+		padding: 1em 10em;
 	}
-	footer i{
-		color: #aaaeb7;
-	}
-	footer a{
-		color: #70747d;
-		margin-left: .4em;
-		font-size: 1.16em;
-	}
-	footer a:hover{
-		color: #00e68a; 
-		text-decoration: none;
-	}
-	footer p{
-		color: #70747d;
-	}
-	footer .about{
-		padding-left: 10em;
-	}
-	footer .sup{
-		padding-left: 6em;
-	}
-	footer .get{
-		padding-right: 4.5em;
+	footer .social .fl{
+		font-size: 150%;
+		font-weight: bold;
+		color: grey;
 	}
 	footer .bottom{
 		background: black;
@@ -40,50 +22,18 @@
 	}
 </style>
 <footer>
-	<div class="row fixed-bottom">
-		<!--About us-->
-		<div class="col-md-4 about">
-			<h3 class="title">ABOUT US</h3>
-			<ul class="list-unstyled">
-		    	<li>
-		    		<i class="fa fa-caret-right"><a href="#">Who we are</a></i>
-				</li>
-		    	<li>
-		    		<i class="fa fa-caret-right"><a href="#">Blog</a></i>
-		    	</li>
-		    	<li>
-		    		<i class="fa fa-caret-right"><a href="#">Contact</a></i>
-		    	</li>
-			</ul>
+	<div class="social">
+		<div class="row">
+			<div class="col-md-4 col-md-offset-3">
+				<div class="fl">FOLLOW ME ON SOCIAL MEDIA</div>
+			</div>
+			<div class="col-md-1">
+				<span><i class="fl fa fa-facebook-square"  style="margin-top: .2em"></i></span>
+			</div>
+			<div class="col-md-1">
+				<span><i class="fl fa fa-twitter" style="margin-top: .2em"></i></span>
+			</div>
 		</div>
-		
-		<!--Support-->
-		<div class="col-md-4 sup">
-			<h3 class="title">SUPPORT</h3>
-			<ul class="list-unstyled">
-			    <li>
-			    	<i class="fa fa-caret-right"><a href="#">Help</a></i>  
-			    </li>
-			    <li>
-			    	<i class="fa fa-caret-right"><a href="#">FAQs</a></i>
-			    </li>
-			    <li>
-			    	<i class="fa fa-caret-right"><a href="#">Privacy</a></i>
-			    </li>
-			</ul>
-		</div>
-
-		<!--Get in touch-->
-		<div class="col-md-4 get">
-			<h3 class="title">CONTACT</h3>                    
-			<p class="tel">
-				<i class="fa fa-phone"><a href="tel:+08001234567">032 666 3287</a></i>	
-			</p>
-			<p class="email">
-				<i class="fa fa-envelope-o"><a href="#">sophia@website.com</a></i>	
-			</p>
-		</div>
-		
 	</div>
 	<div class="bottom">
 		<p>© 2018. Sophia Store Joint Stock Company. GPDKKD: 0303217354 by the Department of Planning and Investment of Da Nang City on 31/12/2017. GP No. 56 / GP-TTDT issued by the DN City Department of Information on 30/07/2018. 
