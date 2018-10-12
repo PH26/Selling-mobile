@@ -13,8 +13,10 @@ class PageController extends Controller
     public function __construct(){
         $categories = Category::all();
         $newproduct = Product::orderBy('id', 'desc')->take(6)->get();
+        $best = Product::orderBy('sale', 'desc')->take(6)->get();
         view()->share('categories',$categories);
         view()->share('newproduct',$newproduct);
+        view()->share('best',$best);
     }
     
     public function index()

@@ -49,7 +49,8 @@
                             <th>Category</th>
                             <th>Price</th>
                             <th>Quantity</th>
-                            <th>Details</th>
+                            <th>Sale</th>
+                            <th>Detail</th>
                             <th>Delete</th>
                         </tr>
                     </thead>
@@ -61,7 +62,8 @@
                                 <td>{{ $product->name }}</td>
                                 <td>{{ $product->category->name }}</td>
                                 <td>{{ $product->price }}</td>
-                                <td>{{ $product->quantity }}</td>                              
+                                <td>{{ $product->quantity }}</td>
+                                <td>{{ $product->sale }}</td>                              
                                 <td>
                                     <a href="{{ route('products.edit',$product)}}">View</a>
                                 </td>

@@ -14,7 +14,7 @@ class CategoryController extends Controller
      */
     public function list()
     {
-        $categories = Category::orderBy('id', 'desc')->paginate(20);
+        $categories = Category::orderBy('id', 'desc')->paginate(10);
         return view('admin.categories.index',compact('categories'));
     }
 
@@ -56,10 +56,10 @@ class CategoryController extends Controller
             if($key != ''){
                 $categories = Category::where('id', 'like', '%'.$key.'%')
                         ->orWhere('name', 'like', '%'.$key.'%')
-                        ->orderBy('id', 'desc')->paginate(20);
+                        ->orderBy('id', 'desc')->paginate(10);
             }
             else{
-                $categories = Category::orderBy('id', 'desc')->paginate(20);
+                $categories = Category::orderBy('id', 'desc')->paginate(10);
             }
         return view('admin.categories.index',compact('categories'));
     }

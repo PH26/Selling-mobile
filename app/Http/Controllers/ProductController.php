@@ -55,7 +55,7 @@ class ProductController extends Controller
                         ->orWhere('name', 'like', '%'.$key.'%')
                         ->orWhere('price', 'like', '%'.$key.'%')
                         ->orWhere('quantity', 'like', '%'.$key.'%')
-                        ->orderBy('id', 'desc')->paginate(15);
+                        ->orderBy('id', 'desc')->paginate(10);
             }
             else{
                 $products = Product::orderBy('id', 'desc')->paginate(10);

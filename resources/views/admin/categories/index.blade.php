@@ -46,6 +46,7 @@
                         <tr>
                             <th>ID</th>
                             <th>Name</th>
+                            <th>Amount of products</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -54,6 +55,7 @@
                             <tr>
                                 <td>{{ $category->id }}</td>
                                 <td>{{ $category->name }}</td>
+                                <td>{{ count($category->products) }}</td>
                                 <td>                                   
                                     <button type="button" value="{{$category->id}}" class="btn btn-success">
                                         <a href="{{ route('categories.edit',$category)}}">
