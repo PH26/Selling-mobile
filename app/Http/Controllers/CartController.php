@@ -51,7 +51,7 @@ class CartController extends Controller
     }
     public function destroy() {
         Cart::destroy();
-        return redirect()->back();;
+        return redirect()->back();
     }
     public function order() {
         if (!Auth::check()){
@@ -77,8 +77,18 @@ class CartController extends Controller
             $detail->product_id = $item->id;
             $detail->quantity = $item->qty;
             $detail->save();
+            $product = Product::find($item->id);
+            if ($product->quantity < $item->qty) {
+                $order->delete();
+                return redirect()->back()->with('error', 'Ordering fail. '.$product->name.' not enough quantity' );
+            }
+        }
+        foreach($cart as $item){
+            $product = Product::find($item->id);
+            $product->quantity=$product->quantity-$item->qty;
+            $product->save();
         }
         Cart::destroy();
-        return redirect()->route('index');
+        return redirect()->back()->with('success', 'Ordering Successful');
     }
 }

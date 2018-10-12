@@ -96,6 +96,21 @@
 @section('content')
 <div class="container bill">
 	<div class="row">
+		@if (session('success'))
+            <div class="col-md-12 alert alert-success" role="alert">
+                {{ session('success') }}
+            </div>
+            <div class="col-md-12">
+            	<a href="{{route('index')}}">Back to homepage</a>
+            </div>          
+		@elseif(session('error'))
+			<div class="col-md-12 alert alert-danger" role="alert">
+                {{ session('error') }}
+            </div>
+            <div class="col-md-12">
+            	<a href="{{route('cart.view')}}">Back to cart</a>
+            </div> 
+		@else
 		<div class="col-md-7 cart">
 	        <table class=" table table-bordered">
 	            <thead>
@@ -103,7 +118,7 @@
 	                    <th>Image</th>
 	                    <th>Name</th>
 	                    <th>Price</th>
-	                    <th>Quantity</th>
+	                    <th>Amount</th>
 	                    <th>Total</th>
 	                </tr>
 	            </thead>
@@ -170,6 +185,7 @@
 			  	</div>
 			</div>
 		</div>
+		@endif
 	</div>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 

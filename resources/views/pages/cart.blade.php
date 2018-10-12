@@ -84,6 +84,7 @@
                     <th>Name</th>
                     <th>Price</th>
                     <th>Quantity</th>
+                    <th>Amount</th>
                     <th>Total</th>
                     <th>Remove</th>
                 </tr>
@@ -105,6 +106,9 @@
                     </td>
                     <td class="cart_price price">
                         <p>{{ number_format($product->price,0, '', '.')}}₫</p>
+                    </td>
+                    <td class="cart_quantity">
+                        <p>{{$product->quantity}}</p>
                     </td>
                     <td class="cart_quantity">
                         <div class="btn-group">
@@ -137,11 +141,11 @@
                 </tr>
                 @endforeach
                 <tr class="sum">
-                    <td colspan="4">Total</td>
+                    <td colspan="5">Total</td>
                     <td colspan="2" style="color: red">{{Cart::subtotal()}}₫</td>
                 </tr>
                 <tr>
-                    <td colspan="6">
+                    <td colspan="7">
                         <a href="{{route('index')}}" 
                             style="float: left; font-size: 120%">Continue to buy
                         </a>
@@ -150,7 +154,7 @@
                     </td>
                 </tr>
                 @else
-                    <tr><td colspan="6">You have no items in the shopping cart</td></tr>
+                    <tr><td colspan="7">You have no items in the shopping cart</td></tr>
                 @endif               
             </tbody>       
         </table>
