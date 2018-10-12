@@ -14,6 +14,7 @@
   <!-- Ionicons -->
   <link rel="stylesheet" href="{{ asset('fonts/ionicons.min.css')}}">
   <link href="https://fonts.googleapis.com/css?family=Dancing+Script|Itim|Lobster|Montserrat:500|Noto+Serif|Nunito|Patrick+Hand|Roboto+Mono:100,100i,300,300i,400,400i,500,500i,700,700i|Roboto+Slab|Saira" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -22,7 +23,7 @@
   <![endif]-->
   <style>
     *{
-      font-family: 'Roboto Slab', serif;   
+      font-family: 'Lato', sans-serif;   
     }
   </style>
 </head>

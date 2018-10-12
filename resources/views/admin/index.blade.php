@@ -30,8 +30,10 @@
                             </p>
                         </div>
                         <div class="col-md-3">
-                            <p style="font-weight: bold; font-family: serif; font-size: 1.15em">Roles</p>
-                            <p style="margin-left: 1em; color: #dd4b39; font-weight: bold">2</p>
+                            <p style="font-weight: bold; font-family: serif; font-size: 1.15em">Aproving</p>
+                            <p style="margin-left: 1em; color: #dd4b39; font-weight: bold">
+                                {{count(App\Order::where('status',0)->get())}}
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -43,7 +45,7 @@
                     <div class="col-md-12">
                         <div class="col-md-4">
                             <div style="background-color: #ecf0f5; width: 15em; text-align: center; 
-                            height: 12em">
+                            height: 12em; border-radius: 10%">
                                 <a href="#">
                                     <i class="fa fa-envelope fa-4x" style="padding: 0.55em 0"></i>
                                     <p style="font-size: 1.5em;">Email</p>
@@ -52,16 +54,16 @@
                         </div>
                         <div class="col-md-4">
                             <div style="background-color: #ecf0f5; width: 15em; text-align: center; 
-                            height: 12em">
-                                <a href="#">
-                                    <i class="fa fa-facebook-square fa-4x" style="padding: 0.55em 0"></i>
+                            height: 12em; border-radius: 10%">
+                                <a href="https://www.facebook.com/TanThiHa.tth">
+                                    <i class="fa fa-facebook-square fa-4x" style="padding: 0.55em 0;"></i>
                                     <p style="font-size: 1.15em">Facebook</p>
                                 </a>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div style="background-color: #ecf0f5; width: 15em; text-align: center;
-                            height: 12em">
+                            height: 12em; border-radius: 10%">
                                 <a href="#">
                                     <i class="fa fa-twitter fa-4x" style="padding: 0.55em 0"></i>
                                     <p style="font-size: 1.15em">Twitter</p>
@@ -70,8 +72,8 @@
                         </div>
                     </div>
                     <div class="col-md-12" style="margin-top: 1em">
-                        <div class="col-md-4"  style="float: right;">
-                            <button type="button" class="btn btn-info btn-md" style="margin-left: 1em">
+                        <div class="col-md-4"  style="float: right; border-radius: 10%">
+                            <button type="button" class="btn btn-info btn-md" style="margin-left: 2em">
                                 <i class="fa fa-twitter"></i>
                                 <a href="#" style="color: white">Tweet</a>
                             </button>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Category;
 use App\Product;
+use App\Order_Detail;
 
 class PageController extends Controller
 {
@@ -31,8 +32,8 @@ class PageController extends Controller
 
     public function product(Product $product)
     {
-        $sameproduct = Product::where('price','>',$product->price-500000)
-                            ->where('price', '<',$product->price+500000)
+        $sameproduct = Product::where('price','>',$product->price-3000000)
+                            ->where('price', '<',$product->price+3000000)
                             ->where('id','<>',$product->id)->take(6)->get();
         return view('pages.product', compact('product','sameproduct'));
     }

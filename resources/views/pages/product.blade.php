@@ -3,6 +3,7 @@
 <style>
 	.index{      
         margin:0 auto;
+        font-family: 'Lato', sans-serif;
     }
     .index .title{
         font-weight: bold;
@@ -137,18 +138,22 @@
 				<div class="row">
 					<div class="col-md-4 product-price">{{ number_format($product->price,0, '', '.')}}₫</div>
 					<div class="col-md-8">
-						<div class="col-md-6">
-							<form method="GET" action="{{route('cart')}}">
-			                    <input type="hidden" name="product_id" value="{{$product->id}}">
-			                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-			                    <button type="submit" class="add-to-cart">
-			                        <img src="{{asset('dist/img/cart.png')}}" style="width: 20%;">
-			                    </button>
-			                </form>
-						</div>
-						<div class="col-md-6">
-							<a class="col-md-12 buy" href="#">BUY NOW</a>
-						</div>                        
+						@if($product->quantity == 0)					
+			                    <div style="background: red; display: inline; color: white; padding: 0.2em 1em" >Out of product</div>
+			            @else
+			            	<div class="col-md-6">
+			                	<form method="GET" action="{{route('cart')}}">
+				                    <input type="hidden" name="product_id" value="{{$product->id}}">
+				                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+				                    <button type="submit" class="add-to-cart">
+				                        <img src="{{asset('dist/img/cart.png')}}" style="width: 20%;">
+				                    </button>
+				                </form>		                						
+							</div>
+							<div class="col-md-6">
+								<a class="col-md-12 buy" href="#">BUY NOW</a>
+							</div> 
+						@endif	                      
 					</div>
 				</div>	
 		      	
@@ -206,10 +211,10 @@
 		                <img class="col-md-4 image" src="{{asset('storage/'.$item->images[0]->url)}}">
 		            </a>
 		            <div class="col-md-6">
-		                @if($product->quantity == 0)
+		                @if($item->quantity == 0)
 		                    <div style="background: red; display: inline; color: white; padding: 0.2em 1em" >Out of product</div>
 		                @else
-		                    <div>Quantity: {{$product->quantity}}</div>
+		                    <div>Quantity: {{$item->quantity}}</div>
 		                @endif
 		                <a href="{{route('product',$item)}}">
 		                    <p class="name">{{$item->name}}</p>
@@ -220,7 +225,7 @@
                         </a>
 		            </div>
 		            <div class="col-md-2">
-		            	@if($product->quantity > 0)
+		            	@if($item->quantity > 0)
 		                    <form method="GET" action="{{route('cart')}}">
 			                    <input type="hidden" name="product_id" value="{{$product->id}}">
 			                    <input type="hidden" name="_token" value="{{ csrf_token() }}">

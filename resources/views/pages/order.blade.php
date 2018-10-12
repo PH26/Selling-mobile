@@ -2,6 +2,7 @@
 <style type="text/css">
     .cart{
         background: white;
+        font-family: 'Lato', sans-serif;
     }
     .cart *{
         text-align: center;
