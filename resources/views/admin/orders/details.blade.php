@@ -23,7 +23,7 @@
                             <th>ID</th>
                             <th>Image</th>
                             <th>Product</th>
-                            <th>Quantity</th>
+                            <th>Amount</th>
                             <th>Total</th>
                         </tr>
                     </thead>

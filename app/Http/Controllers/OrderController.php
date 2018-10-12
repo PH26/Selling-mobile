@@ -16,7 +16,7 @@ class OrderController extends Controller
      */
     public function list()
     {
-        $orders= Order::orderBy('status')->orderBy('orderdate')->paginate(20);
+        $orders= Order::orderBy('status')->orderBy('orderdate')->orderBy('id','desc')->paginate(20);
         return view('admin.orders.index',compact('orders'));
     }
 
@@ -45,7 +45,7 @@ class OrderController extends Controller
                         ->orderBy('status')->orderBy('orderdate')->paginate(20);
             }
             else{
-                $orders= Order::orderBy('status')->orderBy('orderdate')->paginate(20);
+                $orders= Order::orderBy('status')->orderBy('orderdate')->orderBy('id','desc')->paginate(20);
             }
         return view('admin.orders.index',compact('orders'));
     }

@@ -27,11 +27,6 @@
     .index .card:hover img{
         opacity: 0.8;
     }
-    .index .card .rating{
-        color: yellow; 
-        font-size: 1em;
-        display: inline;
-    }
     .index .card .name{
         font-weight: bold;
         font-size: 125%;
@@ -72,25 +67,27 @@
                 <img class="col-md-4 image" src="{{asset('storage/'.$product->images[0]->url)}}">
             </a>
             <div class="col-md-6">
-                <i class="fa fa-star rating"></i>
-                <i class="fa fa-star rating"></i>
-                <i class="fa fa-star rating"></i>
-                <i class="fa fa-star rating"></i>
-                <i class="fa fa-star rating"></i>
+                @if($product->quantity == 0)
+                    <div style="background: red; display: inline; color: white; padding: 0.2em 1em;" >Out of product</div>
+                @else
+                    <div>Quantity: {{$product->quantity}}</div>
+                @endif
                 <a href="{{route('product',$product)}}">
                     <p class="name">{{$product->name}}</p>
                 </a>
                 <p class="price">{{ number_format($product->price,0, '', '.')}}₫</p>
             </div>
             <div class="col-md-2">
-                <form method="GET" action="{{route('cart')}}">
-                    <input type="hidden" name="product_id" value="{{$product->id}}">
-                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                    <button type="submit" class="add-to-cart">
-                        <img src="{{asset('dist/img/cart.png')}}">
-                    </button>
-                </form>
-            </div>            
+                @if($product->quantity > 0)
+                    <form method="GET" action="{{route('cart')}}">
+                        <input type="hidden" name="product_id" value="{{$product->id}}">
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                        <button type="submit" class="add-to-cart">
+                            <img src="{{asset('dist/img/cart.png')}}">
+                        </button>
+                    </form>
+                @endif                      
+            </div>        
         </div>
     @endforeach  
 </div>
@@ -105,22 +102,27 @@
                 <img class="col-md-4 image" src="{{asset('storage/'.$product->images[0]->url)}}">
             </a>
             <div class="col-md-6">
-                <i class="fa fa-star rating"></i>
-                <i class="fa fa-star rating"></i>
+                @if($product->quantity == 0)
+                    <div style="background: red; display: inline; color: white; padding: 0.2em 1em" >Out of product</div>
+                @else
+                    <div>Quantity: {{$product->quantity}}</div>
+                @endif
                 <a href="{{route('product',$product)}}">
                     <p class="name">{{$product->name}}</p>
                 </a>
                 <p class="price">{{ number_format($product->price,0, '', '.')}}₫</p>
             </div>
             <div class="col-md-2">
-                <form method="GET" action="{{route('cart')}}">
-                    <input type="hidden" name="product_id" value="{{$product->id}}">
-                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                    <button type="submit" class="add-to-cart">
-                        <img src="{{asset('dist/img/cart.png')}}">
-                    </button>
-                </form>
-            </div>            
+                @if($product->quantity > 0)
+                    <form method="GET" action="{{route('cart')}}">
+                        <input type="hidden" name="product_id" value="{{$product->id}}">
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                        <button type="submit" class="add-to-cart">
+                            <img src="{{asset('dist/img/cart.png')}}">
+                        </button>
+                    </form>
+                @endif                      
+            </div>              
         </div>
     @endforeach  
 </div>
