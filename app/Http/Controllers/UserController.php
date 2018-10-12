@@ -15,7 +15,7 @@ class UserController extends Controller
      */
     public function list()
     {
-        $users = User::orderBy('id', 'desc')->paginate(20);
+        $users = User::orderBy('id', 'desc')->paginate(10);
         return view('admin.users.index',compact('users'));
     }
 
@@ -65,10 +65,10 @@ class UserController extends Controller
                         ->orWhere('name', 'like', '%'.$key.'%')
                         ->orWhere('tel', 'like', '%'.$key.'%')
                         ->orWhere('email', 'like', '%'.$key.'%')
-                        ->orderBy('id', 'desc')->paginate(20);
+                        ->orderBy('id', 'desc')->paginate(10);
             }
             else{
-                $users = User::orderBy('id', 'desc')->paginate(20);
+                $users = User::orderBy('id', 'desc')->paginate(10);
             }
         return view('admin.users.index',compact('users'));
     }

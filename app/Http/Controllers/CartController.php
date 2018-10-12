@@ -86,6 +86,7 @@ class CartController extends Controller
         foreach($cart as $item){
             $product = Product::find($item->id);
             $product->quantity=$product->quantity-$item->qty;
+            $product->sale=$product->sale+$item->qty;
             $product->save();
         }
         Cart::destroy();
