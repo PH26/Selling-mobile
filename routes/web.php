@@ -4,12 +4,14 @@
 Route::get('/','PageController@index')->name('index');
 Route::get('/category/{id}','PageController@category')->name('category');
 Route::get('/product/{product}','PageController@product')->name('product');
-Route::get('/compare/{product}/{product2}','PageController@compare')->name('compare'); 
+Route::get('/compare/{product}/{product2}','PageController@compare')->name('compare');
+Route::get('/search', 'PageController@search')->name("search"); 
 
 Auth::routes();
 Route::get('/user/activation/{token}', 'Auth\RegisterController@userActivation');
 Route::post('/login','UserController@login')->name("users.login");
 Route::get('/home', 'HomeController@index')->name('home');
+
 Route::get('/cart', 'CartController@cart')->name('cart');
 Route::get('/cart/view', 'CartController@view')->name('cart.view');
 Route::get('/cart/remove','CartController@remove')->name("cart.remove");

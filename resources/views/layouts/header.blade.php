@@ -154,9 +154,10 @@
 			</div>
 		</div>
 		<div class="col-md-4">
-			<form class="example" action="">
-			  <input type="text" placeholder="Find your phone" name="search">
-			  <button type="submit"><i class="fa fa-search"></i></button>
+			<form class="example" action="{{route('search')}}" method="GET">
+				@csrf
+			    <input type="text" placeholder="Find your phone" name="keyword">
+			    <button type="submit"><i class="fa fa-search"></i></button>
 			</form>
 		</div>
 		<div class="col-md-4">

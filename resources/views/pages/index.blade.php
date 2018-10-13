@@ -2,15 +2,16 @@
 @section('content')
 <style>
     .index{      
+        width: 99.8%;
         margin:0 auto;
         font-family: 'Lato', sans-serif;
     }
     .index .title{
         font-weight: bold;
-        font-size: 130%;
+        font-size: 250%;
         border-bottom: 1px solid #f2eded;
-        padding:0.4em 0;
-        margin-left: 1em;
+        padding:0.5em;
+        text-align: center;
     }
     .index .card{
         width: 31%;

@@ -3,6 +3,7 @@
 <style>
 	.index{      
         margin:0 auto;
+        width: 99.69%;
         font-family: 'Lato', sans-serif;
     }
     .index .title{
@@ -109,7 +110,7 @@
     }
 </style>
    
-<div class="col-md-12">
+<div class="col-md-12" style="width: 98%">
 	<div class="panel">
     	<div class="panel-heading">{{ strtoupper($product->name) }}</div>
 	    <div class="panel-body">
