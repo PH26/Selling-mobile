@@ -45,4 +45,20 @@ class PageController extends Controller
         return view('pages.compare', compact('product','product2'));
 
     }
+
+    public function search(Request $request)
+    {
+        $key = $request->get('keyword');
+            if($key != ''){
+                $products = Product::where('id', 'like', '%'.$key.'%')
+                        ->orWhere('name', 'like', '%'.$key.'%')
+                        ->orWhere('price', 'like', '%'.$key.'%')
+                        ->orWhere('quantity', 'like', '%'.$key.'%')
+                        ->orderBy('id', 'desc')->paginate(10);
+            }
+            else{
+                $products = Product::orderBy('id', 'desc')->paginate(10);
+            }
+        return view('pages.index',compact('products'));
+    }
 }
