@@ -90,6 +90,6 @@ class CartController extends Controller
             $product->save();
         }
         Cart::destroy();
-        return redirect()->back()->with('success', 'Ordering Successful');
+        return redirect()->route('home')->with('success', 'Ordering Successful');
     }
 }
