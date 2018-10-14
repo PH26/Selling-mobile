@@ -41,7 +41,7 @@
                     </div>
                 </div>
                 <hr>
-                <table class="table table-striped table-bordered">
+                <table class="table table-hover table-bordered">
                     <thead>
                         <tr>
                             <th>ID</th>

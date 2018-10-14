@@ -11,6 +11,11 @@ Auth::routes();
 Route::get('/user/activation/{token}', 'Auth\RegisterController@userActivation');
 Route::post('/login','UserController@login')->name("users.login");
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home/details/{id}', 'HomeController@details')->name('details');
+Route::get('/home/edit', 'HomeController@edit')->name('edit');
+Route::post('/home/edit', 'HomeController@update')->name('update');
+Route::get('/home/change', 'HomeController@change')->name('change');
+
 
 Route::get('/cart', 'CartController@cart')->name('cart');
 Route::get('/cart/view', 'CartController@view')->name('cart.view');
