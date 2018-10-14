@@ -27,12 +27,12 @@
 @stop
 @section('content')
 <div class="container" style="width: 100%">
+    @if (session('success'))
+        <div class="alert alert-success" role="alert">
+            {{ session('success') }}
+        </div>
+    @endif 
     <div class="profile">
-        @if (session('success'))
-            <div class="alert alert-success" role="alert">
-                {{ session('success') }}
-            </div>
-        @endif 
         <table>
             <thead>
                 <tr>

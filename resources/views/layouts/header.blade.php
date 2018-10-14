@@ -173,7 +173,7 @@
 			@else
 				<div class="col-md-7">
 					<a href="{{route('login')}}">
-						<button class="btn ">Login</button>
+						<button class="btn ">LOGIN</button>
 					</a>
 				</div>
 			@endif		

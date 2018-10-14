@@ -151,9 +151,6 @@
 				                    </button>
 				                </form>		                						
 							</div>
-							<div class="col-md-6">
-								<a class="col-md-12 buy" href="#">BUY NOW</a>
-							</div> 
 						@endif	                      
 					</div>
 				</div>	
@@ -228,7 +225,7 @@
 		            <div class="col-md-2">
 		            	@if($item->quantity > 0)
 		                    <form method="GET" action="{{route('cart')}}">
-			                    <input type="hidden" name="product_id" value="{{$product->id}}">
+			                    <input type="hidden" name="product_id" value="{{$item->id}}">
 			                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
 			                    <button type="submit" class="add-to-cart">
 			                        <img src="{{asset('dist/img/cart.png')}}">

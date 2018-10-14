@@ -153,11 +153,8 @@
 			</div>
 			<hr>
 			<div class="col-md-5 col-md-offset-2">
-				@if($product->quantity > 0)
-					<div class="col-md-6">
-						<p class="col-md-12 add-cart">BUY NOW</p>
-					</div>
-					<div class="col-md-4">				
+				@if($product->quantity > 0)				
+					<div class="col-md-6">				
 						<form method="GET" action="{{route('cart')}}">
 		                    <input type="hidden" name="product_id" value="{{$product->id}}">
 		                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -173,10 +170,7 @@
 			</div>
 			<div class="col-md-5">
 				@if($product2->quantity > 0)
-					<div class="col-md-6">
-						<p class="col-md-12 add-cart">BUY NOW</p>
-					</div>
-					<div class="col-md-4">				
+					<div class="col-md-6 col-md-offset-1">				
 						<form method="GET" action="{{route('cart')}}">
 		                    <input type="hidden" name="product_id" value="{{$product2->id}}">
 		                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
