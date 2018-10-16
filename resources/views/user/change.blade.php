@@ -24,17 +24,17 @@
     }
 </style>
 @section('title')
-    {{'Home'}}
+    {{'Change Password'}}
 @stop
 @section('content')
 <div class="container" style="width: 100%">
-    <div class="profile">
-        @if (session('error'))
-            <div class="alert alert-danger" role="alert">
-                {{ session('error') }}
-            </div>
-        @endif 
-        <form action="{{route('home')}}" method="GET" >
+    @if (session('error'))
+        <div class="alert alert-danger" role="alert">
+            {{ session('error') }}
+        </div>
+    @endif 
+    <div class="profile">      
+        <form action="{{route('changed')}}" method="POST" >
             @csrf
             <table>
                 <thead>

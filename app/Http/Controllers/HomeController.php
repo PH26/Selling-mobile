@@ -49,16 +49,31 @@ class HomeController extends Controller
             'tel.numeric'=>'Tel must be numeric'
         ]);
         $user->update($request->all());
-        return redirect()->route('home')->with('success', 'Edit a user successfully');;
+        return redirect()->route('home')->with('success', 'Edit user successfully');
     }
 
     public function change()
     {
         return view('user.change');
     }
+
     public function details($id)
     {
         $orderdetails = Order_Detail::where('order_id',$id)->get();
         return view('user.details',compact('orderdetails','id'));
+    }
+
+    public function changed(Request $request)
+    {
+        $user = User::find($request->id);
+        if (! Hash::check($request->password, $user['password'])) {
+            return redirect()->back()->with('error', 'Incorrect old password!!!');
+        }
+        if ($request->pass != $request->repass) {
+            return redirect()->back()->with('error', "New password don't the match!!!");
+        }
+        $user->password = bcrypt($request->pass);
+        $user->save();
+        return redirect()->route('home')->with('success', 'Update password successfully');
     }
 }

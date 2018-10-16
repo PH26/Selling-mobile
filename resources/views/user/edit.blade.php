@@ -14,8 +14,7 @@
         color: red;
     }
     .profile{
-        width: 30%;
-        float: left;
+        width: 50%;
     }
     input{
         border: none;
@@ -23,7 +22,7 @@
     }
 </style>
 @section('title')
-    {{'Home'}}
+    {{'Edit'}}
 @stop
 @section('content')
 <div class="container" style="width: 100%">
