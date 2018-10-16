@@ -12,7 +12,7 @@
 
 </style>
 @section('title')
-    {{'Home'}}
+    {{'Orders'}}
 @stop
 @section('content')            
 <div class="container" style="width: 100%">

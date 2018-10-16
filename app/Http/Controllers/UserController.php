@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
 use App\User;
+use Cart;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -47,8 +48,9 @@ class UserController extends Controller
         ]);
         $user = User::create($request->all());
         $user->password = bcrypt($user->password);
+        $user->active = 1;
         $user->save();
-        return redirect()->route('users.create')->with('success', 'Create a new user successfully');;
+        return redirect()->route('users.create')->with('success', 'Create a new user successfully');
     }
 
     /**
@@ -124,8 +126,11 @@ class UserController extends Controller
 
     public function login(Request $request)
     {   
-        if (Auth::attempt(['email'=>$request->email,'password'=>$request->password,'user_type'=>0,'active'=>1])) {
-            return redirect()->route('cart.view');        
+        if (Auth::attempt(['email'=>$request->email,'password'=>$request->password,'user_type'=>0,'active'=>1])){
+            if (Cart::content()->count()>0)
+                return redirect()->route('cart.view');     
+            else
+               return redirect()->route('home');     
         }else{
             return redirect()->route('login')->with('error', 'Incorrect information!!!');
         }

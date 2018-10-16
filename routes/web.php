@@ -15,6 +15,7 @@ Route::get('/home/details/{id}', 'HomeController@details')->name('details');
 Route::get('/home/edit', 'HomeController@edit')->name('edit');
 Route::post('/home/edit', 'HomeController@update')->name('update');
 Route::get('/home/change', 'HomeController@change')->name('change');
+Route::post('/home/changed', 'HomeController@changed')->name('changed');
 
 
 Route::get('/cart', 'CartController@cart')->name('cart');
