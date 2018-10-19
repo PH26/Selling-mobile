@@ -56,13 +56,19 @@
     }
 </style>
 <div class="col-md-12 index">
-    <div class="col-md-12 title">
-        @if(isset($category))
-            {{ strtoupper($category->name)}}           
+        @if(count($products) == 0)
+            <div class="alert alert-warning" role="alert" style="text-align: center;">
+                Products not found
+            </div>
         @else
-            Prominent phones
+            <div class="col-md-12 title">
+                @if(isset($category))
+                    {{ strtoupper($category->name)}}           
+                @else
+                    Prominent phones
+                @endif   
+            </div>
         @endif   
-    </div>
     @foreach($products as $product)
         <div class="col-md-4 card">
             <a href="{{route('product',$product)}}">
